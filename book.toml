@@ -1,0 +1,6 @@
+[book]
+authors = ["Pierre Wendling"]
+language = "en"
+multilingual = false
+src = "src"
+title = "SDL Tutorial"
