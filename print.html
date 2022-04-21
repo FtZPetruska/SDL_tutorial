@@ -76,7 +76,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded "><a href="ch1-prerequisites/index.html"><strong aria-hidden="true">1.</strong> Prerequisites</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch1-prerequisites/windows.html"><strong aria-hidden="true">1.1.</strong> Windows</a></li><li class="chapter-item expanded "><a href="ch1-prerequisites/macos.html"><strong aria-hidden="true">1.2.</strong> macOS</a></li><li class="chapter-item expanded "><a href="ch1-prerequisites/linux.html"><strong aria-hidden="true">1.3.</strong> Linux</a></li></ol></li><li class="chapter-item expanded "><a href="ch2-cmake-vcpkg/index.html"><strong aria-hidden="true">2.</strong> CMake, VCPKG and VSCode: the silver bullet</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded "><a href="ch1-cmake-vcpkg/index.html"><strong aria-hidden="true">1.</strong> CMake, VCPKG and VSCode: the silver bullet</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch1-cmake-vcpkg/1-installation/1-introduction.html"><strong aria-hidden="true">1.1.</strong> Installation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch1-cmake-vcpkg/1-installation/2-windows.html"><strong aria-hidden="true">1.1.1.</strong> Windows</a></li><li class="chapter-item expanded "><a href="ch1-cmake-vcpkg/1-installation/3-macos.html"><strong aria-hidden="true">1.1.2.</strong> macOS</a></li><li class="chapter-item expanded "><a href="ch1-cmake-vcpkg/1-installation/4-linux.html"><strong aria-hidden="true">1.1.3.</strong> Linux</a></li></ol></li><li class="chapter-item expanded "><a href="ch1-cmake-vcpkg/2-configuring-vscode/1-configuring-vscode.html"><strong aria-hidden="true">1.2.</strong> Configuring vscode</a></li><li class="chapter-item expanded "><a href="ch1-cmake-vcpkg/3-sdl2-install/1-sdl2-install.html"><strong aria-hidden="true">1.3.</strong> Installing packages with VCPKG</a></li><li class="chapter-item expanded "><a href="ch1-cmake-vcpkg/4-cmakelists/1-cmakelists.html"><strong aria-hidden="true">1.4.</strong> Writing a CMakeLists</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -144,19 +144,440 @@
 <h2 id="what-this-tutorial-is-not-for"><a class="header" href="#what-this-tutorial-is-not-for">What this tutorial is <strong>not</strong> for</a></h2>
 <p>This guide will not cover cross-compilation in any way. It will assume that when you are targeting your own machine.</p>
 <p>Similarly, this guide assumes a fairly modern computer, capable of running Windows 10, macOS 10.15 or an up-to-date Linux distro.</p>
-<p>SDL1.2 will not be covered either, its last release was over ten years ago and has been superseeded by SDL2.</p>
+<p>SDL1.2 will not be covered either, its last release was over ten years ago and has been superseded by SDL2.</p>
 <p>Lastly, this will not teach you how to use any of the libraries, some code examples will include some code from them to ensure everything worked but shall remain terse.</p>
 <h2 id="reporting-issues"><a class="header" href="#reporting-issues">Reporting issues</a></h2>
 <p>Something does not work for you ? What you see seems outdated ? Feel free to open an <a href="https://github.com/FtZPetruska/SDL_tutorial/issues">issue</a>!</p>
 <p>You may also get a quicker answer to your exact problem on the <a href="https://discord.gg/F6mPUgc">SDL discord</a>.</p>
 <h2 id="license"><a class="header" href="#license">License</a></h2>
 <p>This tutorial is released under the <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU General Public License Version 3</a>.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="introduction-1"><a class="header" href="#introduction-1">Introduction</a></h1>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="windows-prerequisites"><a class="header" href="#windows-prerequisites">Windows prerequisites</a></h1>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="macos-prerequisited"><a class="header" href="#macos-prerequisited">macOS prerequisited</a></h1>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="linux-prerequisites"><a class="header" href="#linux-prerequisites">Linux prerequisites</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="cmake-and-vcpkg-in-visual-studio-code"><a class="header" href="#cmake-and-vcpkg-in-visual-studio-code">CMake and VCPKG in Visual Studio Code</a></h1>
 <p>This chapter will cover a solution that should work regardless of your OS.</p>
+<p>This solution uses:</p>
+<ul>
+<li>Ninja as a build system. (MSBuild on Windows)</li>
+<li>CMake to generate build system files.</li>
+<li>Microsoft VCPKG to grab all the libraries.</li>
+<li>Visual Studio Code to write the code and interface with CMake</li>
+</ul>
+<p>It should be noted that while this solution works on Windows, macOS and Linux it is <strong>not</strong> necessarily the best solution. For example, if you are on Windows, Microsoft Visual Studio provides an overall better experience and supports all the aforementioned tools, similarly if you have access to a JetBrains CLion license, you may prefer using it instead.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="installation-of-the-tools"><a class="header" href="#installation-of-the-tools">Installation of the Tools</a></h1>
+<p>Visual Studio Code binaries can be grabbed on <a href="https://code.visualstudio.com/">this website</a>. If your Linux distribution does not support the formats offered, it is also available as a flatpak on <a href="https://flathub.org/apps/details/com.visualstudio.code">flathub</a>.</p>
+<p>The installation of the other tools is OS-specific:</p>
+<ul>
+<li><a href="ch1-cmake-vcpkg/1-installation/./2-windows.html">Windows instructions</a></li>
+<li><a href="ch1-cmake-vcpkg/1-installation/./3-macos.html">macOS instructions</a></li>
+<li><a href="ch1-cmake-vcpkg/1-installation/./4-linux.html">Linux instructions</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="windows-installation"><a class="header" href="#windows-installation">Windows Installation</a></h1>
+<p>In this section, we will only cover the compiler Microsoft provides with Visual Studio and the LLVM toolchain which <strong>depends</strong> on Visual Studio. If you are only running Windows and your PC is not a potato, I <strong>strongly</strong> encourage you to use Visual Studio instead of Visual Studio Code as it provides on its own all the functionalities that we are installing separately in this section and overall an overall better developer experience.</p>
+<h2 id="visual-studio"><a class="header" href="#visual-studio">Visual Studio</a></h2>
+<p>You want to head to <a href="https://visualstudio.microsoft.com/">Microsoft's website</a> and download Visual Studio 2022 Community.</p>
+<p>During the installation you want to pick the &quot;C++ Desktop development&quot; workflow. You want to make sure that the optional feature &quot;MSVC v143 - VS 2022 C++ x64/x86 Build Tools (Latest version)&quot; is ticked on.</p>
+<h2 id="command-line-tools"><a class="header" href="#command-line-tools">Command-Line Tools</a></h2>
+<p>In this section, we will use Chocolatey to install CMake and git. Optionally, we will also install the LLVM toolchain and Ninja.</p>
+<p>First, head over to <a href="https://chocolatey.org/install#individual">Chocolatey's website</a> and follow their install instructions.</p>
+<p>To install packages with chocolatey, you will need administrator privileges. You can install a sudo-like alternative using:</p>
+<pre><code class="language-console">&gt; choco install gsudo
+</code></pre>
+<p>This command needs to be entered in an elevated prompt. For the rest of the commands, I will assume that this package is installed and start the commands with <code>sudo</code> when elevation is required.</p>
+<p>You can now install CMake and git by running:</p>
+<pre><code class="language-console">&gt; sudo choco install cmake git
+</code></pre>
+<p>Finally, if you want to use the LLVM toolchain, you need to install Ninja along with it:</p>
+<pre><code class="language-console">&gt; sudo choco install llvm ninja
+</code></pre>
+<p>Make sure to reboot</p>
+<h2 id="vcpkg"><a class="header" href="#vcpkg">VCPKG</a></h2>
+<p>First start by cloning the VCPKG repository and enter the folder:</p>
+<pre><code class="language-console">&gt; git clone https://github.com/Microsoft/vcpkg.git
+&gt; cd vcpkg
+</code></pre>
+<p>Then run the following command to download (or compile) the executable, you pass the <code>-disableMetrics</code> argument if you wish disable usage metrics:</p>
+<pre><code class="language-console">&gt; ./bootstrap-vcpkg.bat
+</code></pre>
+<p>Finally, you want to modify your environment variables and add:</p>
+<pre><code>VCPKG_ROOT              C:/Path/To/VCPKG
+VCPKG_DEFAULT_TRIPLET   x64-windows
+</code></pre>
+<p>And update your PATH by adding a new entry containing: <code>%VCPKG_ROOT%</code></p>
+<p>NB: VCPKG can be on any drive, not necessarily on the C drive.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="macos-installation"><a class="header" href="#macos-installation">MacOS Installation</a></h1>
+<p>The first thing you will need to install on macOS is command-line developer tools. Even if you are using Xcode tools, they will be needed to install the <a href="https://brew.sh">Homebrew</a> package manager.</p>
+<p>To install these tools, open a terminal and run:</p>
+<pre><code class="language-console">% xcode-select --install
+</code></pre>
+<p>Once the command-line tools are installed, you can run this command <strong>without</strong> root privileges to install Homebrew:</p>
+<pre><code class="language-console">% /bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;
+</code></pre>
+<p>Once the installation finishes, make sure to close and reopen your terminal so the environment gets set properly.</p>
+<p>Optional homebrew packages that you may be interested in:</p>
+<ul>
+<li><code>git</code> and <code>git-gui</code> as Apple's versions tend to be slightly out of date.</li>
+<li><code>llvm</code> for LLVM's version of Clang.</li>
+<li><code>gcc</code> for the GNU C/C++ compilers.</li>
+<li><code>clang-format</code> for a C/C++ code formatter.</li>
+</ul>
+<h2 id="ninja-and-cmake"><a class="header" href="#ninja-and-cmake">Ninja and CMake</a></h2>
+<p>You can install both packages at once using this command:</p>
+<pre><code class="language-console">% brew install cmake ninja
+</code></pre>
+<p>Add the following lines in your <code>.zshrc</code> (or equivalent if you use a different shell):</p>
+<pre><code class="language-bash">export CMAKE_EXPORT_COMPILE_COMMANDS=ON
+export CMAKE_GENERATOR=Ninja
+</code></pre>
+<h2 id="vcpkg-1"><a class="header" href="#vcpkg-1">VCPKG</a></h2>
+<p>First start by cloning the VCPKG repository and enter the folder:</p>
+<pre><code class="language-console">% git clone https://github.com/Microsoft/vcpkg.git
+% cd vcpkg
+</code></pre>
+<p>Then run the following command to download (or compile) the executable, you pass the <code>-disableMetrics</code> argument if you wish disable usage metrics:</p>
+<pre><code class="language-console">% ./bootstrap-vcpkg.sh
+</code></pre>
+<p>Finally, you want to add the following lines in your <code>~/.zshrc</code>:</p>
+<pre><code class="language-bash">export VCPKG_ROOT=/path/to/vcpkg
+export PATH=&quot;$VCPKG_ROOT:$PATH&quot;
+</code></pre>
+<p>If your device is running an M1 CPU:</p>
+<pre><code class="language-bash">export VCPKG_DEFAULT_TRIPLET=arm64-osx
+</code></pre>
+<p>If your device is running an Intel CPU:</p>
+<pre><code class="language-bash">export VCPKG_DEFAULT_TRIPLET=x64-osx
+</code></pre>
+<h2 id="notes"><a class="header" href="#notes">Notes</a></h2>
+<p>The LLVM suite of tools will not be added to your path by default as it overlaps with Apple's version (except for <code>clang-format</code>), you will manually need to create the kit entry later on if you wish to use it with that setup.</p>
+<p>As the time of writing, vcpkg does not support &quot;universal binaries&quot;, and while it is technically possible to define a custom &quot;triplet&quot; to create them, some dependencies of SDL2 subprojects explicitly forbid universal binaries in their <code>CMakeLists.txt</code>. As such only native builds will be covered.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="linux-installation"><a class="header" href="#linux-installation">Linux Installation</a></h1>
+<p>The package names in this section will only cover Arch Linux and Ubuntu. If a package is not found, please check your own distribution package list before filing an issue.</p>
+<h2 id="ubuntu"><a class="header" href="#ubuntu">Ubuntu</a></h2>
+<p>Before anything, you want to ensure your system is up to date by running:</p>
+<pre><code class="language-console">$ sudo apt update &amp;&amp; sudo apt upgrade
+</code></pre>
+<p>We will first need to install a compiler. The two main options are GCC and LLVM Clang:</p>
+<pre><code class="language-console">$ sudo apt install gcc
+$ sudo apt install clang
+</code></pre>
+<p>We then need to install the dependencies for VCPKG:</p>
+<pre><code class="language-console">$ sudo apt install cmake ninja-build git zip unzip tar curl
+</code></pre>
+<p>Finally, we need some specific <code>-dev</code> libraries that are required to build SDL2.</p>
+<pre><code class="language-console">$ sudo apt install libx11-dev libxft-dev libxext-dev pkg-config
+</code></pre>
+<p>You may also be interesting in installing <code>clang-format</code>, which provides a code formatter and <code>clang-tidy</code> which provides a static analyser:</p>
+<pre><code class="language-console">$ sudo apt install clang-format clang-tidy
+</code></pre>
+<h2 id="arch-linux"><a class="header" href="#arch-linux">Arch Linux</a></h2>
+<p>Before anything, you want to ensure your system is up to date by running:</p>
+<pre><code class="language-console">$ sudo pacman -Syu
+</code></pre>
+<p>We will first need to install a compiler. The two main options are GCC and LLVM Clang:</p>
+<pre><code class="language-console">$ sudo pacman -S gcc
+$ sudo pacman -S clang
+</code></pre>
+<p>We then need to install the dependencies for VCPKG:</p>
+<pre><code class="language-console">$ sudo pacman -S cmake ninja git zip unzip tar curl
+</code></pre>
+<p>Finally, we need some specific libraries that are required to build SDL2.</p>
+<pre><code class="language-console">$ sudo pacman -S libx11 libxft libxext pkg-config
+</code></pre>
+<h2 id="vcpkg-2"><a class="header" href="#vcpkg-2">VCPKG</a></h2>
+<p>First start by cloning the VCPKG repository and enter the folder:</p>
+<pre><code class="language-console">% git clone https://github.com/Microsoft/vcpkg.git
+% cd vcpkg
+</code></pre>
+<p>Then run the following command to download (or compile) the executable, you pass the <code>-disableMetrics</code> argument if you wish disable usage metrics:</p>
+<pre><code class="language-console">% ./bootstrap-vcpkg.sh
+</code></pre>
+<p>Finally, you want to add the following lines in your shell's RC file (<code>~/.bashrc</code> on bash, <code>~/.zshrc</code> on zsh...):</p>
+<pre><code class="language-bash">export VCPKG_ROOT=/path/to/vcpkg
+export PATH=&quot;$VCPKG_ROOT:$PATH&quot;
+export VCPKG_DEFAULT_TRIPLET=x64-linux
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="configuring-visual-studio-code"><a class="header" href="#configuring-visual-studio-code">Configuring Visual Studio Code</a></h1>
+<p>In this section, we will go through the extensions needed in order to use CMake and vcpkg and get syntax highlighting in C/C++.</p>
+<h2 id="extensions"><a class="header" href="#extensions">Extensions</a></h2>
+<p>Head over the extension menu to the left, you want the following extensions:</p>
+<ul>
+<li><code>ms-vscode.cpptools</code>, provides C/C++ support</li>
+<li><code>ms-vscode.cmake-tools</code>, provides CMake commands</li>
+<li><code>twxs.cmake</code>, provide CMakeLists.txt syntax highlighting, it is planned to be integrated in <code>cmake-tools</code> version 1.11</li>
+</ul>
+<h2 id="settings"><a class="header" href="#settings">Settings</a></h2>
+<p>Now that the extensions are installed, press CTRL-SHIFT-P (CMD-SHIFT-P on macOS) and type <code>Preferences: Open Settings (JSON)</code>.</p>
+<p>You can then add the following entries:</p>
+<pre><code class="language-json">{
+  // Previous settings here
+
+  // C/C++
+  &quot;C_Cpp.default.cStandard&quot;: &quot;c17&quot;,
+  &quot;C_Cpp.default.cppStandard&quot;: &quot;c++20&quot;,
+  &quot;C_Cpp.default.configurationProvider&quot;: &quot;ms-vscode.cmake-tools&quot;,
+
+  // CMake
+  &quot;cmake.configureOnOpen&quot;: false,
+  &quot;cmake.generator&quot;: &quot;Ninja&quot; // Remove this option on Windows
+}
+</code></pre>
+<h2 id="configuring-cmake-kits"><a class="header" href="#configuring-cmake-kits">Configuring CMake Kits</a></h2>
+<p>For this part, you will need to open a folder with an existing <code>CMakeLists.txt</code> in order for the extension to show up.</p>
+<p>Start by opening an empty folder, pressing CTRL-SHIFT-P (CMD-SHIFT-P on macOS) and type <code>CMake: Quick Start</code>, a name for the project, and select <code>Executable</code>.</p>
+<p>Once the project gets created, you will start seeing new options in the blue status bar at the bottom, and will also be prompted to select a &quot;kit&quot; (you may need to <code>[Scan for kits]</code> first).</p>
+<p>If at this step no kit appears even after scanning, ensure that you have installed a compiler.</p>
+<p>We now want to add a new kit that will make use of vcpkg. Start by opening the kits' file by pressing CTRL-SHIFT-P (CMD-SHIFT-P on macOS) and typing <code>CMake: Edit User-Local CMake Kits</code>.</p>
+<p>Find the scanned kit using the compiler you want to use and make a copy of it. Note that if you edit a scanned kit, your modifications may be erased if you rescan kits later.</p>
+<p>Edit the kit by changing its name (for example by adding <code>(vcpkg)</code> at the end of it) and adding a new field:</p>
+<pre><code class="language-json">&quot;toolchainFile&quot;: &quot;[/path/to/vcpkg]/scripts/buildsystems/vcpkg.cmake&quot;,
+</code></pre>
+<p>With the new kit saved, on the status bar, click on <code>No Active Kit</code> to select your new kit, then on the <code>build</code> right next to the kit to ensure the configuration and build works.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="installing-packages-with-vcpkg"><a class="header" href="#installing-packages-with-vcpkg">Installing packages with VCPKG</a></h1>
+<p>There are two ways to use VCPKG, the first one includes manually using the <code>vcpkg install</code> command to manually install the packages, the second is to fill a project-specific <code>vcpkg.json</code> manifest that lists all the desired dependencies.</p>
+<h2 id="classic-mode"><a class="header" href="#classic-mode">Classic mode</a></h2>
+<p>Open a terminal and run the following command:</p>
+<pre><code class="language-console">% vcpkg search sdl2
+</code></pre>
+<p>This command will list all the available SDL2 libraries and their optional features.</p>
+<p>If you want SDL2_image with libjpeg-turbo and libwebp support you would run:</p>
+<pre><code class="language-console">% vcpkg install &quot;sdl2-image[libjpeg-turbo,libwebp]&quot;
+</code></pre>
+<p>For this tutorial, we will not be using any optional features, so here is the command used:</p>
+<pre><code class="language-console">% vcpkg install sdl2 sdl2-image sdl2-mixer sdl2-net sdl2-ttf
+</code></pre>
+<p>NB: At the time of writing, SDL2_sound is not available on VCPKG.</p>
+<p>Finally, make the packages available user-wide with the command:</p>
+<pre><code class="language-console">% vcpkg integrate install
+</code></pre>
+<p>In classic mode, the packages will not be updated automatically. Make sure to go in VCPKG's folder once in a while, run <code>git pull</code> to get the latest changes, bootstrap a new executable, and run <code>vcpkg update</code> to check for package updates.</p>
+<h2 id="manifest-mode"><a class="header" href="#manifest-mode">Manifest mode</a></h2>
+<p>Create a file called <code>vcpkg.json</code> next to the <code>CMakeLists.txt</code>, and write the following:</p>
+<pre><code class="language-json">{
+  &quot;$schema&quot;: &quot;https://raw.githubusercontent.com/microsoft/vcpkg/master/scripts/vcpkg.schema.json&quot;,
+  &quot;name&quot;: &quot;my-application&quot;,
+  &quot;version&quot;: &quot;0.0.1&quot;,
+  &quot;dependencies&quot;: [&quot;sdl2&quot;, &quot;sdl2-image&quot;, &quot;sdl2-mixer&quot;, &quot;sdl2-net&quot;, &quot;sdl2-ttf&quot;]
+}
+</code></pre>
+<p>VCPKG will automatically pick up the manifest and grab the dependencies during CMake configure stage and make them available to this project.</p>
+<p>Similarly to classic mode, you can specify features for your dependencies in the manifest. Here's what it would look like to only add support for libjpeg-turbo and libwebp:</p>
+<pre><code class="language-json">&quot;dependencies&quot;: [
+  {
+    &quot;name&quot;: &quot;sdl2-image&quot;,
+    &quot;default-features&quot;: false,
+    &quot;features&quot;: [
+      &quot;libjpeg-turbo&quot;,
+      &quot;libwebp&quot;
+    ]
+  }
+]
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="using-the-libraries-in-the-build-system"><a class="header" href="#using-the-libraries-in-the-build-system">Using the libraries in the build system</a></h1>
+<p>In this section, we will see how to tell CMake which libraries we need and how to link them.</p>
+<h2 id="finding-the-libraries"><a class="header" href="#finding-the-libraries">Finding the libraries</a></h2>
+<p>After VCPKG finished compiling the dependencies, it should output something similar to:</p>
+<pre><code>The package sdl2 provides CMake targets:
+
+    find_package(SDL2 CONFIG REQUIRED)
+    target_link_libraries(main PRIVATE SDL2::SDL2 SDL2::SDL2main SDL2::SDL2-static)
+
+The package sdl2-image provides CMake targets:
+
+    find_package(sdl2-image CONFIG REQUIRED)
+    target_link_libraries(main PRIVATE SDL2::SDL2_image)
+
+The package sdl2-mixer provides CMake targets:
+
+    find_package(sdl2-mixer CONFIG REQUIRED)
+    target_link_libraries(main PRIVATE SDL2::SDL2_mixer)
+
+The package sdl2-net provides CMake targets:
+
+    find_package(sdl2-net CONFIG REQUIRED)
+    target_link_libraries(main PRIVATE SDL2::SDL2_net)
+
+The package sdl2-ttf provides CMake targets:
+
+    find_package(sdl2-ttf CONFIG REQUIRED)
+    target_link_libraries(main PRIVATE SDL2::SDL2_ttf)
+</code></pre>
+<p>This roughly explains how to find and use each package.</p>
+<p>To get started, you can edit the <code>CMakeLists.txt</code> generated using the <code>CMake: Quick Start</code> command.</p>
+<p>Before the <code>add_executable</code> statement, you want to add the following lines:</p>
+<pre><code class="language-cmake">find_package(SDL2 CONFIG REQUIRED)
+find_package(sdl2-image CONFIG REQUIRED)
+find_package(sdl2-mixer CONFIG REQUIRED)
+find_package(sdl2-net CONFIG REQUIRED)
+find_package(sdl2-ttf CONFIG REQUIRED)
+</code></pre>
+<p>This will tell CMake to look for all the libraries, and that they are required (configuration will fail if they are not found).</p>
+<p>After the <code>add_executable</code> statement, you want to add the following lines:</p>
+<pre><code class="language-cmake">target_link_libraries(
+  Tutorial
+  PRIVATE
+  SDL2::SDL2
+  SDL2::SDL2main
+  SDL2::SDL2_image
+  SDL2::SDL2_mixer
+  SDL2::SDL2_net
+  SDL2::SDL2_ttf)
+</code></pre>
+<p>This will tell CMake to link all the libraries to your application.</p>
+<p>Your <code>CMakeLists.txt</code> should look like this:</p>
+<pre><code class="language-cmake">cmake_minimum_required(VERSION 3.0.0)
+project(Tutorial VERSION 0.1.0)
+
+find_package(SDL2 CONFIG REQUIRED)
+find_package(sdl2-image CONFIG REQUIRED)
+find_package(sdl2-mixer CONFIG REQUIRED)
+find_package(sdl2-net CONFIG REQUIRED)
+find_package(sdl2-ttf CONFIG REQUIRED)
+
+add_executable(Tutorial main.cpp)
+
+target_link_libraries(
+  Tutorial
+  PRIVATE
+  SDL2::SDL2
+  SDL2::SDL2main
+  SDL2::SDL2_image
+  SDL2::SDL2_mixer
+  SDL2::SDL2_net
+  SDL2::SDL2_ttf
+)
+</code></pre>
+<h2 id="testing-it"><a class="header" href="#testing-it">Testing it</a></h2>
+<p>Firstly, you should run the configure stage with CMake, this can be done by pressing CTRL-SHIFT-P (CMD-SHIFT-P on macOS) and running <code>CMake: Configure</code>. With the right kit selected, the configuration step should finish without error.</p>
+<p>You can then try to build using the <code>build</code> button on the status bar, this should compile the default <code>main.cpp</code> file (a simple hello world) and link it against all the libraries we have downloaded.</p>
+<p>Lastly, we will replace the content of <code>main.cpp</code> to initialize all the libraries, print out their version and shut them all down, ensuring everything worked correctly.</p>
+<details>
+<summary> The code in question </summary>
+<pre><code class="language-cpp">#include &lt;SDL.h&gt;
+#include &lt;SDL_image.h&gt;
+#include &lt;SDL_mixer.h&gt;
+#include &lt;SDL_net.h&gt;
+#include &lt;SDL_ttf.h&gt;
+
+/**
+ * @brief Initializes every library.
+ */
+void init_all(void) {
+  if (0 &gt; SDL_Init(SDL_INIT_VIDEO)) {
+    SDL_Log(&quot;%s\n&quot;, SDL_GetError());
+    return;
+  }
+
+  if (0 &gt; IMG_Init(IMG_INIT_PNG)) {
+    SDL_Log(&quot;%s\n&quot;, IMG_GetError());
+    return;
+  }
+
+  if (0 &gt; Mix_Init(MIX_INIT_MP3)) {
+    SDL_Log(&quot;%s\n&quot;, Mix_GetError());
+    return;
+  }
+
+  if (0 &gt; SDLNet_Init()) {
+    SDL_Log(&quot;%s\n&quot;, SDLNet_GetError());
+    return;
+  }
+
+  if (0 &gt; TTF_Init()) {
+    SDL_Log(&quot;%s&quot;, TTF_GetError());
+    return;
+  }
+
+  SDL_Log(&quot;Every library was initialized successfully.\n&quot;);
+}
+
+/**
+ * @brief Quits all libraries.
+ */
+void quit_all(void) {
+  TTF_Quit();
+  SDLNet_Quit();
+  Mix_Quit();
+  IMG_Quit();
+  SDL_Quit();
+}
+
+/**
+ * @brief For each libraries, logs the installed version.
+ */
+void log_libraries_version(void) {
+  SDL_version sdl_compiled_version;
+  SDL_VERSION(&amp;sdl_compiled_version);
+  SDL_version sdl_linked_version;
+  SDL_GetVersion(&amp;sdl_linked_version);
+  SDL_Log(&quot;SDL:\n&quot;
+          &quot;\tCompiled against: %d.%d.%d\n&quot;
+          &quot;\tLinked against: %d.%d.%d\n&quot;,
+          sdl_compiled_version.major, sdl_compiled_version.minor,
+          sdl_compiled_version.patch, sdl_linked_version.major,
+          sdl_linked_version.minor, sdl_linked_version.patch);
+
+  SDL_version img_compiled_version;
+  SDL_IMAGE_VERSION(&amp;img_compiled_version);
+  const SDL_version *img_linked_version = IMG_Linked_Version();
+  SDL_Log(&quot;SDL Image:\n&quot;
+          &quot;\tCompiled against: %d.%d.%d\n&quot;
+          &quot;\tLinked against: %d.%d.%d\n&quot;,
+          img_compiled_version.major, img_compiled_version.minor,
+          img_compiled_version.patch, img_linked_version-&gt;major,
+          img_linked_version-&gt;minor, img_linked_version-&gt;patch);
+
+  SDL_version mix_compiled_version;
+  SDL_MIXER_VERSION(&amp;mix_compiled_version);
+  const SDL_version *mix_linked_version = Mix_Linked_Version();
+  SDL_Log(&quot;SDL Mixer:\n&quot;
+          &quot;\tCompiled against: %d.%d.%d\n&quot;
+          &quot;\tLinked against: %d.%d.%d\n&quot;,
+          mix_compiled_version.major, mix_compiled_version.minor,
+          mix_compiled_version.patch, mix_linked_version-&gt;major,
+          mix_linked_version-&gt;minor, mix_linked_version-&gt;patch);
+
+  SDLNet_version net_compiled_version;
+  SDL_NET_VERSION(&amp;net_compiled_version);
+  const SDLNet_version *net_linked_version = SDLNet_Linked_Version();
+  SDL_Log(&quot;SDL Net:\n&quot;
+          &quot;\tCompiled against: %d.%d.%d\n&quot;
+          &quot;\tLinked against: %d.%d.%d\n&quot;,
+          net_compiled_version.major, net_compiled_version.minor,
+          net_compiled_version.patch, net_linked_version-&gt;major,
+          net_linked_version-&gt;minor, net_linked_version-&gt;patch);
+
+  SDL_version ttf_compiled_version;
+  TTF_VERSION(&amp;ttf_compiled_version);
+  const SDL_version *ttf_linked_version = TTF_Linked_Version();
+  SDL_Log(&quot;SDL TTF:\n&quot;
+          &quot;\tCompiled against: %d.%d.%d\n&quot;
+          &quot;\tLinked against: %d.%d.%d\n&quot;,
+          ttf_compiled_version.major, ttf_compiled_version.minor,
+          ttf_compiled_version.patch, ttf_linked_version-&gt;major,
+          ttf_linked_version-&gt;minor, ttf_linked_version-&gt;patch);
+}
+
+int main(int, char **) {
+  init_all();
+  log_libraries_version();
+  quit_all();
+}
+</code></pre>
+</details>
+<p>After pasting the code, you can simply hit <code>build</code> and run the executable, if no error shows up: congratulations, you are ready to get coding!</p>
+<h2 id="notes-about-sdl2main"><a class="header" href="#notes-about-sdl2main">Notes about SDL2main</a></h2>
+<p>When coding an app, you may not care about arguments passed through command line, and may as such be tempted to change your entry point to:</p>
+<pre><code class="language-cpp">int main()
+</code></pre>
+<p>This declaration is unfortunately incompatible with the way SDL2main works. If you do not care about arguments, and have warnings turned on for unused variables, you have two ways to ignore them:</p>
+<pre><code class="language-cpp">int main(int, char **) { // C++-only
+  // Your code
+}
+
+int main(int argc, char *argv[]) { // C/C++
+  (void)argc;
+  (void)argv;
+  // Your code
+}
+</code></pre>
+<p>The first option consists in telling the compiler: &quot;Yes, there are two arguments of these types in my signature, but I will not use them, and as such did not give them a name.” The second option is to add a no-op statement for each argument, so they are considered &quot;used&quot; despite not doing anything.</p>
 
                     </main>
 
