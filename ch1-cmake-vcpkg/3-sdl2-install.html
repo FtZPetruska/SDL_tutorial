@@ -138,18 +138,18 @@
 <p>There are two ways to use VCPKG, the first one includes manually using the <code>vcpkg install</code> command to manually install the packages, the second is to fill a project-specific <code>vcpkg.json</code> manifest that lists all the desired dependencies.</p>
 <h2 id="classic-mode"><a class="header" href="#classic-mode">Classic mode</a></h2>
 <p>Open a terminal and run the following command:</p>
-<pre><code class="language-console">% vcpkg search sdl2
+<pre><code>vcpkg search sdl2
 </code></pre>
 <p>This command will list all the available SDL2 libraries and their optional features.</p>
 <p>If you want SDL2_image with libjpeg-turbo and libwebp support you would run:</p>
-<pre><code class="language-console">% vcpkg install &quot;sdl2-image[libjpeg-turbo,libwebp]&quot;
+<pre><code>vcpkg install &quot;sdl2-image[libjpeg-turbo,libwebp]&quot;
 </code></pre>
 <p>For this tutorial, we will not be using any optional features, so here is the command used:</p>
-<pre><code class="language-console">% vcpkg install sdl2 sdl2-image sdl2-mixer sdl2-net sdl2-ttf
+<pre><code>vcpkg install sdl2 sdl2-image sdl2-mixer sdl2-net sdl2-ttf
 </code></pre>
 <p>NB: At the time of writing, SDL2_sound is not available on VCPKG.</p>
 <p>Finally, make the packages available user-wide with the command:</p>
-<pre><code class="language-console">% vcpkg integrate install
+<pre><code>vcpkg integrate install
 </code></pre>
 <p>In classic mode, the packages will not be updated automatically. Make sure to go in VCPKG's folder once in a while, run <code>git pull</code> to get the latest changes, bootstrap a new executable, and run <code>vcpkg update</code> to check for package updates.</p>
 <h2 id="manifest-mode"><a class="header" href="#manifest-mode">Manifest mode</a></h2>

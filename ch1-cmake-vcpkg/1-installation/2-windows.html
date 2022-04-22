@@ -143,23 +143,23 @@
 <p>In this section, we will use Chocolatey to install CMake and git. Optionally, we will also install the LLVM toolchain and Ninja.</p>
 <p>First, head over to <a href="https://chocolatey.org/install#individual">Chocolatey's website</a> and follow their install instructions.</p>
 <p>To install packages with chocolatey, you will need administrator privileges. You can install a sudo-like alternative using:</p>
-<pre><code class="language-console">&gt; choco install gsudo
+<pre><code>choco install gsudo
 </code></pre>
 <p>This command needs to be entered in an elevated prompt. For the rest of the commands, I will assume that this package is installed and start the commands with <code>sudo</code> when elevation is required.</p>
 <p>You can now install CMake and git by running:</p>
-<pre><code class="language-console">&gt; sudo choco install cmake git
+<pre><code>sudo choco install cmake git
 </code></pre>
 <p>Finally, if you want to use the LLVM toolchain, you need to install Ninja along with it:</p>
-<pre><code class="language-console">&gt; sudo choco install llvm ninja
+<pre><code>sudo choco install llvm ninja
 </code></pre>
 <p>Make sure to reboot</p>
 <h2 id="vcpkg"><a class="header" href="#vcpkg">VCPKG</a></h2>
 <p>First start by cloning the VCPKG repository and enter the folder:</p>
-<pre><code class="language-console">&gt; git clone https://github.com/Microsoft/vcpkg.git
-&gt; cd vcpkg
+<pre><code>git clone https://github.com/Microsoft/vcpkg.git
+cd vcpkg
 </code></pre>
 <p>Then run the following command to download (or compile) the executable, you can pass the <code>-disableMetrics</code> argument if you wish disable usage metrics:</p>
-<pre><code class="language-console">&gt; ./bootstrap-vcpkg.bat
+<pre><code>./bootstrap-vcpkg.bat
 </code></pre>
 <p>Finally, you want to modify your environment variables and add:</p>
 <pre><code>VCPKG_ROOT              C:/Path/To/VCPKG

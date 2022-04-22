@@ -138,42 +138,42 @@
 <p>The package names in this section will only cover Arch Linux and Ubuntu. If a package is not found, please check your own distribution package list before filing an issue.</p>
 <h2 id="ubuntu"><a class="header" href="#ubuntu">Ubuntu</a></h2>
 <p>Before anything, you want to ensure your system is up to date by running:</p>
-<pre><code class="language-console">$ sudo apt update &amp;&amp; sudo apt upgrade
+<pre><code>sudo apt update &amp;&amp; sudo apt upgrade
 </code></pre>
 <p>We will first need to install a compiler. The two main options are GCC and LLVM Clang:</p>
-<pre><code class="language-console">$ sudo apt install gcc
-$ sudo apt install clang
+<pre><code>sudo apt install gcc
+sudo apt install clang
 </code></pre>
 <p>We then need to install the dependencies for VCPKG:</p>
-<pre><code class="language-console">$ sudo apt install cmake ninja-build git zip unzip tar curl
+<pre><code>sudo apt install cmake ninja-build git zip unzip tar curl
 </code></pre>
 <p>Finally, we need some specific <code>-dev</code> libraries that are required to build SDL2.</p>
-<pre><code class="language-console">$ sudo apt install libx11-dev libxft-dev libxext-dev pkg-config
+<pre><code>sudo apt install libx11-dev libxft-dev libxext-dev pkg-config
 </code></pre>
 <p>You may also be interesting in installing <code>clang-format</code>, which provides a code formatter and <code>clang-tidy</code> which provides a static analyser:</p>
-<pre><code class="language-console">$ sudo apt install clang-format clang-tidy
+<pre><code>sudo apt install clang-format clang-tidy
 </code></pre>
 <h2 id="arch-linux"><a class="header" href="#arch-linux">Arch Linux</a></h2>
 <p>Before anything, you want to ensure your system is up to date by running:</p>
-<pre><code class="language-console">$ sudo pacman -Syu
+<pre><code>sudo pacman -Syu
 </code></pre>
 <p>We will first need to install a compiler. The two main options are GCC and LLVM Clang:</p>
-<pre><code class="language-console">$ sudo pacman -S gcc
-$ sudo pacman -S clang
+<pre><code>sudo pacman -S gcc
+sudo pacman -S clang
 </code></pre>
 <p>We then need to install the dependencies for VCPKG:</p>
-<pre><code class="language-console">$ sudo pacman -S cmake ninja git zip unzip tar curl
+<pre><code>sudo pacman -S cmake ninja git zip unzip tar curl
 </code></pre>
 <p>Finally, we need some specific libraries that are required to build SDL2.</p>
-<pre><code class="language-console">$ sudo pacman -S libx11 libxft libxext pkg-config
+<pre><code>sudo pacman -S libx11 libxft libxext pkg-config
 </code></pre>
 <h2 id="vcpkg"><a class="header" href="#vcpkg">VCPKG</a></h2>
 <p>First start by cloning the VCPKG repository and enter the folder:</p>
-<pre><code class="language-console">% git clone https://github.com/Microsoft/vcpkg.git
-% cd vcpkg
+<pre><code>git clone https://github.com/Microsoft/vcpkg.git
+cd vcpkg
 </code></pre>
 <p>Then run the following command to download (or compile) the executable, you can pass the <code>-disableMetrics</code> argument if you wish disable usage metrics:</p>
-<pre><code class="language-console">% ./bootstrap-vcpkg.sh
+<pre><code>./bootstrap-vcpkg.sh
 </code></pre>
 <p>Finally, you want to add the following lines in your shell's RC file (<code>~/.bashrc</code> on bash, <code>~/.zshrc</code> on zsh...):</p>
 <pre><code class="language-bash">export VCPKG_ROOT=/path/to/vcpkg

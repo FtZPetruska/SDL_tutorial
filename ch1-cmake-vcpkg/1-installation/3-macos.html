@@ -137,10 +137,10 @@
                         <h1 id="macos-installation"><a class="header" href="#macos-installation">MacOS Installation</a></h1>
 <p>The first thing you will need to install on macOS is command-line developer tools. Even if you are using Xcode tools, they will be needed to install the <a href="https://brew.sh">Homebrew</a> package manager.</p>
 <p>To install these tools, open a terminal and run:</p>
-<pre><code class="language-console">% xcode-select --install
+<pre><code>xcode-select --install
 </code></pre>
 <p>Once the command-line tools are installed, you can run this command <strong>without</strong> root privileges to install Homebrew:</p>
-<pre><code class="language-console">% /bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;
+<pre><code>/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;
 </code></pre>
 <p>Once the installation finishes, make sure to close and reopen your terminal so the environment gets set properly.</p>
 <p>Optional homebrew packages that you may be interested in:</p>
@@ -152,7 +152,7 @@
 </ul>
 <h2 id="ninja-and-cmake"><a class="header" href="#ninja-and-cmake">Ninja and CMake</a></h2>
 <p>You can install both packages at once using this command:</p>
-<pre><code class="language-console">% brew install cmake ninja
+<pre><code>brew install cmake ninja
 </code></pre>
 <p>Add the following lines in your <code>.zshrc</code> (or equivalent if you use a different shell):</p>
 <pre><code class="language-bash">export CMAKE_EXPORT_COMPILE_COMMANDS=ON
@@ -160,11 +160,11 @@ export CMAKE_GENERATOR=Ninja
 </code></pre>
 <h2 id="vcpkg"><a class="header" href="#vcpkg">VCPKG</a></h2>
 <p>First start by cloning the VCPKG repository and enter the folder:</p>
-<pre><code class="language-console">% git clone https://github.com/Microsoft/vcpkg.git
-% cd vcpkg
+<pre><code>git clone https://github.com/Microsoft/vcpkg.git
+cd vcpkg
 </code></pre>
 <p>Then run the following command to download (or compile) the executable, you can pass the <code>-disableMetrics</code> argument if you wish disable usage metrics:</p>
-<pre><code class="language-console">% ./bootstrap-vcpkg.sh
+<pre><code>./bootstrap-vcpkg.sh
 </code></pre>
 <p>Finally, you want to add the following lines in your <code>~/.zshrc</code>:</p>
 <pre><code class="language-bash">export VCPKG_ROOT=/path/to/vcpkg

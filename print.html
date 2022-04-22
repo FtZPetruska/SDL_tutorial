@@ -178,23 +178,23 @@
 <p>In this section, we will use Chocolatey to install CMake and git. Optionally, we will also install the LLVM toolchain and Ninja.</p>
 <p>First, head over to <a href="https://chocolatey.org/install#individual">Chocolatey's website</a> and follow their install instructions.</p>
 <p>To install packages with chocolatey, you will need administrator privileges. You can install a sudo-like alternative using:</p>
-<pre><code class="language-console">&gt; choco install gsudo
+<pre><code>choco install gsudo
 </code></pre>
 <p>This command needs to be entered in an elevated prompt. For the rest of the commands, I will assume that this package is installed and start the commands with <code>sudo</code> when elevation is required.</p>
 <p>You can now install CMake and git by running:</p>
-<pre><code class="language-console">&gt; sudo choco install cmake git
+<pre><code>sudo choco install cmake git
 </code></pre>
 <p>Finally, if you want to use the LLVM toolchain, you need to install Ninja along with it:</p>
-<pre><code class="language-console">&gt; sudo choco install llvm ninja
+<pre><code>sudo choco install llvm ninja
 </code></pre>
 <p>Make sure to reboot</p>
 <h2 id="vcpkg"><a class="header" href="#vcpkg">VCPKG</a></h2>
 <p>First start by cloning the VCPKG repository and enter the folder:</p>
-<pre><code class="language-console">&gt; git clone https://github.com/Microsoft/vcpkg.git
-&gt; cd vcpkg
+<pre><code>git clone https://github.com/Microsoft/vcpkg.git
+cd vcpkg
 </code></pre>
 <p>Then run the following command to download (or compile) the executable, you can pass the <code>-disableMetrics</code> argument if you wish disable usage metrics:</p>
-<pre><code class="language-console">&gt; ./bootstrap-vcpkg.bat
+<pre><code>./bootstrap-vcpkg.bat
 </code></pre>
 <p>Finally, you want to modify your environment variables and add:</p>
 <pre><code>VCPKG_ROOT              C:/Path/To/VCPKG
@@ -205,10 +205,10 @@ VCPKG_DEFAULT_TRIPLET   x64-windows
 <div style="break-before: page; page-break-before: always;"></div><h1 id="macos-installation"><a class="header" href="#macos-installation">MacOS Installation</a></h1>
 <p>The first thing you will need to install on macOS is command-line developer tools. Even if you are using Xcode tools, they will be needed to install the <a href="https://brew.sh">Homebrew</a> package manager.</p>
 <p>To install these tools, open a terminal and run:</p>
-<pre><code class="language-console">% xcode-select --install
+<pre><code>xcode-select --install
 </code></pre>
 <p>Once the command-line tools are installed, you can run this command <strong>without</strong> root privileges to install Homebrew:</p>
-<pre><code class="language-console">% /bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;
+<pre><code>/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;
 </code></pre>
 <p>Once the installation finishes, make sure to close and reopen your terminal so the environment gets set properly.</p>
 <p>Optional homebrew packages that you may be interested in:</p>
@@ -220,7 +220,7 @@ VCPKG_DEFAULT_TRIPLET   x64-windows
 </ul>
 <h2 id="ninja-and-cmake"><a class="header" href="#ninja-and-cmake">Ninja and CMake</a></h2>
 <p>You can install both packages at once using this command:</p>
-<pre><code class="language-console">% brew install cmake ninja
+<pre><code>brew install cmake ninja
 </code></pre>
 <p>Add the following lines in your <code>.zshrc</code> (or equivalent if you use a different shell):</p>
 <pre><code class="language-bash">export CMAKE_EXPORT_COMPILE_COMMANDS=ON
@@ -228,11 +228,11 @@ export CMAKE_GENERATOR=Ninja
 </code></pre>
 <h2 id="vcpkg-1"><a class="header" href="#vcpkg-1">VCPKG</a></h2>
 <p>First start by cloning the VCPKG repository and enter the folder:</p>
-<pre><code class="language-console">% git clone https://github.com/Microsoft/vcpkg.git
-% cd vcpkg
+<pre><code>git clone https://github.com/Microsoft/vcpkg.git
+cd vcpkg
 </code></pre>
 <p>Then run the following command to download (or compile) the executable, you can pass the <code>-disableMetrics</code> argument if you wish disable usage metrics:</p>
-<pre><code class="language-console">% ./bootstrap-vcpkg.sh
+<pre><code>./bootstrap-vcpkg.sh
 </code></pre>
 <p>Finally, you want to add the following lines in your <code>~/.zshrc</code>:</p>
 <pre><code class="language-bash">export VCPKG_ROOT=/path/to/vcpkg
@@ -251,42 +251,42 @@ export PATH=&quot;$VCPKG_ROOT:$PATH&quot;
 <p>The package names in this section will only cover Arch Linux and Ubuntu. If a package is not found, please check your own distribution package list before filing an issue.</p>
 <h2 id="ubuntu"><a class="header" href="#ubuntu">Ubuntu</a></h2>
 <p>Before anything, you want to ensure your system is up to date by running:</p>
-<pre><code class="language-console">$ sudo apt update &amp;&amp; sudo apt upgrade
+<pre><code>sudo apt update &amp;&amp; sudo apt upgrade
 </code></pre>
 <p>We will first need to install a compiler. The two main options are GCC and LLVM Clang:</p>
-<pre><code class="language-console">$ sudo apt install gcc
-$ sudo apt install clang
+<pre><code>sudo apt install gcc
+sudo apt install clang
 </code></pre>
 <p>We then need to install the dependencies for VCPKG:</p>
-<pre><code class="language-console">$ sudo apt install cmake ninja-build git zip unzip tar curl
+<pre><code>sudo apt install cmake ninja-build git zip unzip tar curl
 </code></pre>
 <p>Finally, we need some specific <code>-dev</code> libraries that are required to build SDL2.</p>
-<pre><code class="language-console">$ sudo apt install libx11-dev libxft-dev libxext-dev pkg-config
+<pre><code>sudo apt install libx11-dev libxft-dev libxext-dev pkg-config
 </code></pre>
 <p>You may also be interesting in installing <code>clang-format</code>, which provides a code formatter and <code>clang-tidy</code> which provides a static analyser:</p>
-<pre><code class="language-console">$ sudo apt install clang-format clang-tidy
+<pre><code>sudo apt install clang-format clang-tidy
 </code></pre>
 <h2 id="arch-linux"><a class="header" href="#arch-linux">Arch Linux</a></h2>
 <p>Before anything, you want to ensure your system is up to date by running:</p>
-<pre><code class="language-console">$ sudo pacman -Syu
+<pre><code>sudo pacman -Syu
 </code></pre>
 <p>We will first need to install a compiler. The two main options are GCC and LLVM Clang:</p>
-<pre><code class="language-console">$ sudo pacman -S gcc
-$ sudo pacman -S clang
+<pre><code>sudo pacman -S gcc
+sudo pacman -S clang
 </code></pre>
 <p>We then need to install the dependencies for VCPKG:</p>
-<pre><code class="language-console">$ sudo pacman -S cmake ninja git zip unzip tar curl
+<pre><code>sudo pacman -S cmake ninja git zip unzip tar curl
 </code></pre>
 <p>Finally, we need some specific libraries that are required to build SDL2.</p>
-<pre><code class="language-console">$ sudo pacman -S libx11 libxft libxext pkg-config
+<pre><code>sudo pacman -S libx11 libxft libxext pkg-config
 </code></pre>
 <h2 id="vcpkg-2"><a class="header" href="#vcpkg-2">VCPKG</a></h2>
 <p>First start by cloning the VCPKG repository and enter the folder:</p>
-<pre><code class="language-console">% git clone https://github.com/Microsoft/vcpkg.git
-% cd vcpkg
+<pre><code>git clone https://github.com/Microsoft/vcpkg.git
+cd vcpkg
 </code></pre>
 <p>Then run the following command to download (or compile) the executable, you can pass the <code>-disableMetrics</code> argument if you wish disable usage metrics:</p>
-<pre><code class="language-console">% ./bootstrap-vcpkg.sh
+<pre><code>./bootstrap-vcpkg.sh
 </code></pre>
 <p>Finally, you want to add the following lines in your shell's RC file (<code>~/.bashrc</code> on bash, <code>~/.zshrc</code> on zsh...):</p>
 <pre><code class="language-bash">export VCPKG_ROOT=/path/to/vcpkg
@@ -333,18 +333,18 @@ export VCPKG_DEFAULT_TRIPLET=x64-linux
 <p>There are two ways to use VCPKG, the first one includes manually using the <code>vcpkg install</code> command to manually install the packages, the second is to fill a project-specific <code>vcpkg.json</code> manifest that lists all the desired dependencies.</p>
 <h2 id="classic-mode"><a class="header" href="#classic-mode">Classic mode</a></h2>
 <p>Open a terminal and run the following command:</p>
-<pre><code class="language-console">% vcpkg search sdl2
+<pre><code>vcpkg search sdl2
 </code></pre>
 <p>This command will list all the available SDL2 libraries and their optional features.</p>
 <p>If you want SDL2_image with libjpeg-turbo and libwebp support you would run:</p>
-<pre><code class="language-console">% vcpkg install &quot;sdl2-image[libjpeg-turbo,libwebp]&quot;
+<pre><code>vcpkg install &quot;sdl2-image[libjpeg-turbo,libwebp]&quot;
 </code></pre>
 <p>For this tutorial, we will not be using any optional features, so here is the command used:</p>
-<pre><code class="language-console">% vcpkg install sdl2 sdl2-image sdl2-mixer sdl2-net sdl2-ttf
+<pre><code>vcpkg install sdl2 sdl2-image sdl2-mixer sdl2-net sdl2-ttf
 </code></pre>
 <p>NB: At the time of writing, SDL2_sound is not available on VCPKG.</p>
 <p>Finally, make the packages available user-wide with the command:</p>
-<pre><code class="language-console">% vcpkg integrate install
+<pre><code>vcpkg integrate install
 </code></pre>
 <p>In classic mode, the packages will not be updated automatically. Make sure to go in VCPKG's folder once in a while, run <code>git pull</code> to get the latest changes, bootstrap a new executable, and run <code>vcpkg update</code> to check for package updates.</p>
 <h2 id="manifest-mode"><a class="header" href="#manifest-mode">Manifest mode</a></h2>
@@ -849,14 +849,14 @@ int main(int argc, char *argv[]) { // C/C++
 <p>We will use Chocolatey to install CMake, Ninja and git, which are needed to use VCPKG.</p>
 <p>First, head over to <a href="https://chocolatey.org/install#individual">Chocolatey's website</a> and follow their install instructions.</p>
 <p>Once Chocolatey is installed, open a fresh elevated prompt and run:</p>
-<pre><code class="language-console">&gt; choco install cmake git ninja
+<pre><code>choco install cmake git ninja
 </code></pre>
 <p>Once the installation is done, navigate to the folder that will host the VCPKG installation and run:</p>
-<pre><code class="language-console">&gt; git clone https://github.com/Microsoft/vcpkg.git
-&gt; cd vcpkg
+<pre><code>git clone https://github.com/Microsoft/vcpkg.git
+cd vcpkg
 </code></pre>
 <p>Then run the following command to download (or compile) the executable, you can pass the <code>-disableMetrics</code> argument if you wish disable usage metrics:</p>
-<pre><code class="language-console">&gt; ./bootstrap-vcpkg.bat
+<pre><code>./bootstrap-vcpkg.bat
 </code></pre>
 <p>Finally, you want to modify your environment variables and add:</p>
 <pre><code>VCPKG_ROOT              C:/Path/To/VCPKG
@@ -867,15 +867,15 @@ VCPKG_DEFAULT_TRIPLET   x64-windows
 <h2 id="installing-libraries-with-vcpkg"><a class="header" href="#installing-libraries-with-vcpkg">Installing libraries with VCPKG</a></h2>
 <p>With VCPKG in your path, it is pretty straight forward to install libraries and make them available to Visual Studio. As Visual Studio ships by default with both a <code>x64</code> and a <code>x86</code> configuration, we will install both.</p>
 <p>Start by running the following command:</p>
-<pre><code class="language-console">&gt; vcpkg search sdl2
+<pre><code>vcpkg search sdl2
 </code></pre>
 <p>This will list all the SDL2 packages and their available &quot;features&quot; in square brackets. For this tutorial, we will stick to the default set of features, but if you need more, simply append the list of features after the name. For example, <code>&quot;sdl2-image[libjpeg-turbo,libwebp]&quot;</code> will add jpeg and webp support to SDL2_image.</p>
 <p>Run the following commands to install all the packages for both x86 and x64:</p>
-<pre><code class="language-console">&gt; vcpkg instal --triplet=x86-windows sdl2 sdl2-image sdl2-mixer sdl2-net sdl2-ttf
-&gt; vcpkg instal --triplet=x64-windows sdl2 sdl2-image sdl2-mixer sdl2-net sdl2-ttf
+<pre><code>vcpkg instal --triplet=x86-windows sdl2 sdl2-image sdl2-mixer sdl2-net sdl2-ttf
+vcpkg instal --triplet=x64-windows sdl2 sdl2-image sdl2-mixer sdl2-net sdl2-ttf
 </code></pre>
 <p>Finally, let Visual Studio know about the newly installed packages with:</p>
-<pre><code class="language-console">&gt; vcpkg integrate install
+<pre><code>vcpkg integrate install
 </code></pre>
 <h2 id="creating-a-project"><a class="header" href="#creating-a-project">Creating a project</a></h2>
 <p>SDL2 is one of the handful of libraries that need additional setup in Visual Studio. So let's take that opportunity to take a tour of all the useful options!</p>
@@ -1027,14 +1027,14 @@ int main(int argc, char *argv[]) { // C/C++
 <p>We will use Chocolatey to install CMake, Ninja and git, which are needed to use VCPKG.</p>
 <p>First, head over to <a href="https://chocolatey.org/install#individual">Chocolatey's website</a> and follow their install instructions.</p>
 <p>Once Chocolatey is installed, open a fresh elevated prompt and run:</p>
-<pre><code class="language-console">&gt; choco install cmake git ninja
+<pre><code>choco install cmake git ninja
 </code></pre>
 <p>Once the installation is done, navigate to the folder that will host the VCPKG installation and run:</p>
-<pre><code class="language-console">&gt; git clone https://github.com/Microsoft/vcpkg.git
-&gt; cd vcpkg
+<pre><code>git clone https://github.com/Microsoft/vcpkg.git
+cd vcpkg
 </code></pre>
 <p>Then run the following command to download (or compile) the executable, you can pass the <code>-disableMetrics</code> argument if you wish disable usage metrics:</p>
-<pre><code class="language-console">&gt; ./bootstrap-vcpkg.bat
+<pre><code>./bootstrap-vcpkg.bat
 </code></pre>
 <p>Finally, you want to modify your environment variables and add:</p>
 <pre><code>VCPKG_ROOT              C:/Path/To/VCPKG
@@ -1045,15 +1045,15 @@ VCPKG_DEFAULT_TRIPLET   x64-windows
 <h2 id="installing-libraries-with-vcpkg-1"><a class="header" href="#installing-libraries-with-vcpkg-1">Installing libraries with VCPKG</a></h2>
 <p>With VCPKG in your path, it is pretty straight forward to install libraries and use them in CMake. As Visual Studio ships by default with both a <code>x64</code> and a <code>x86</code> configuration, we will install both.</p>
 <p>Start by running the following command:</p>
-<pre><code class="language-console">&gt; vcpkg search sdl2
+<pre><code>vcpkg search sdl2
 </code></pre>
 <p>This will list all the SDL2 packages and their available &quot;features&quot; in square brackets. For this tutorial, we will stick to the default set of features, but if you need more, simply append the list of features after the name. For example, <code>&quot;sdl2-image[libjpeg-turbo,libwebp]&quot;</code> will add jpeg and webp support to SDL2_image.</p>
 <p>Run the following commands to install all the packages for both x86 and x64:</p>
-<pre><code class="language-console">&gt; vcpkg instal --triplet=x86-windows sdl2 sdl2-image sdl2-mixer sdl2-net sdl2-ttf
-&gt; vcpkg instal --triplet=x64-windows sdl2 sdl2-image sdl2-mixer sdl2-net sdl2-ttf
+<pre><code>vcpkg instal --triplet=x86-windows sdl2 sdl2-image sdl2-mixer sdl2-net sdl2-ttf
+vcpkg instal --triplet=x64-windows sdl2 sdl2-image sdl2-mixer sdl2-net sdl2-ttf
 </code></pre>
 <p>Finally, run this command:</p>
-<pre><code class="language-console">&gt; vcpkg integrate install
+<pre><code>vcpkg integrate install
 </code></pre>
 <h2 id="creating-the-project-1"><a class="header" href="#creating-the-project-1">Creating the project</a></h2>
 <p>Start by creating a new project with the template <code>CMake Project</code>. Give it a name and leave <code>Place solution and project in the same directory</code> ticked on.</p>

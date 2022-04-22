@@ -140,14 +140,14 @@
 <p>We will use Chocolatey to install CMake, Ninja and git, which are needed to use VCPKG.</p>
 <p>First, head over to <a href="https://chocolatey.org/install#individual">Chocolatey's website</a> and follow their install instructions.</p>
 <p>Once Chocolatey is installed, open a fresh elevated prompt and run:</p>
-<pre><code class="language-console">&gt; choco install cmake git ninja
+<pre><code>choco install cmake git ninja
 </code></pre>
 <p>Once the installation is done, navigate to the folder that will host the VCPKG installation and run:</p>
-<pre><code class="language-console">&gt; git clone https://github.com/Microsoft/vcpkg.git
-&gt; cd vcpkg
+<pre><code>git clone https://github.com/Microsoft/vcpkg.git
+cd vcpkg
 </code></pre>
 <p>Then run the following command to download (or compile) the executable, you can pass the <code>-disableMetrics</code> argument if you wish disable usage metrics:</p>
-<pre><code class="language-console">&gt; ./bootstrap-vcpkg.bat
+<pre><code>./bootstrap-vcpkg.bat
 </code></pre>
 <p>Finally, you want to modify your environment variables and add:</p>
 <pre><code>VCPKG_ROOT              C:/Path/To/VCPKG
@@ -158,15 +158,15 @@ VCPKG_DEFAULT_TRIPLET   x64-windows
 <h2 id="installing-libraries-with-vcpkg"><a class="header" href="#installing-libraries-with-vcpkg">Installing libraries with VCPKG</a></h2>
 <p>With VCPKG in your path, it is pretty straight forward to install libraries and use them in CMake. As Visual Studio ships by default with both a <code>x64</code> and a <code>x86</code> configuration, we will install both.</p>
 <p>Start by running the following command:</p>
-<pre><code class="language-console">&gt; vcpkg search sdl2
+<pre><code>vcpkg search sdl2
 </code></pre>
 <p>This will list all the SDL2 packages and their available &quot;features&quot; in square brackets. For this tutorial, we will stick to the default set of features, but if you need more, simply append the list of features after the name. For example, <code>&quot;sdl2-image[libjpeg-turbo,libwebp]&quot;</code> will add jpeg and webp support to SDL2_image.</p>
 <p>Run the following commands to install all the packages for both x86 and x64:</p>
-<pre><code class="language-console">&gt; vcpkg instal --triplet=x86-windows sdl2 sdl2-image sdl2-mixer sdl2-net sdl2-ttf
-&gt; vcpkg instal --triplet=x64-windows sdl2 sdl2-image sdl2-mixer sdl2-net sdl2-ttf
+<pre><code>vcpkg instal --triplet=x86-windows sdl2 sdl2-image sdl2-mixer sdl2-net sdl2-ttf
+vcpkg instal --triplet=x64-windows sdl2 sdl2-image sdl2-mixer sdl2-net sdl2-ttf
 </code></pre>
 <p>Finally, run this command:</p>
-<pre><code class="language-console">&gt; vcpkg integrate install
+<pre><code>vcpkg integrate install
 </code></pre>
 <h2 id="creating-the-project"><a class="header" href="#creating-the-project">Creating the project</a></h2>
 <p>Start by creating a new project with the template <code>CMake Project</code>. Give it a name and leave <code>Place solution and project in the same directory</code> ticked on.</p>
