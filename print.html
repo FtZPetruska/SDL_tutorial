@@ -76,7 +76,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded "><a href="ch1-cmake-vcpkg/index.html"><strong aria-hidden="true">1.</strong> CMake, VCPKG and VSCode: the silver bullet</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch1-cmake-vcpkg/1-installation/1-introduction.html"><strong aria-hidden="true">1.1.</strong> Installation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch1-cmake-vcpkg/1-installation/2-windows.html"><strong aria-hidden="true">1.1.1.</strong> Windows</a></li><li class="chapter-item expanded "><a href="ch1-cmake-vcpkg/1-installation/3-macos.html"><strong aria-hidden="true">1.1.2.</strong> macOS</a></li><li class="chapter-item expanded "><a href="ch1-cmake-vcpkg/1-installation/4-linux.html"><strong aria-hidden="true">1.1.3.</strong> Linux</a></li></ol></li><li class="chapter-item expanded "><a href="ch1-cmake-vcpkg/2-configuring-vscode/1-configuring-vscode.html"><strong aria-hidden="true">1.2.</strong> Configuring vscode</a></li><li class="chapter-item expanded "><a href="ch1-cmake-vcpkg/3-sdl2-install/1-sdl2-install.html"><strong aria-hidden="true">1.3.</strong> Installing packages with VCPKG</a></li><li class="chapter-item expanded "><a href="ch1-cmake-vcpkg/4-cmakelists/1-cmakelists.html"><strong aria-hidden="true">1.4.</strong> Writing a CMakeLists</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded "><a href="ch1-cmake-vcpkg/index.html"><strong aria-hidden="true">1.</strong> CMake, VCPKG and VSCode: the silver bullet</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch1-cmake-vcpkg/1-installation/1-introduction.html"><strong aria-hidden="true">1.1.</strong> Installation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch1-cmake-vcpkg/1-installation/2-windows.html"><strong aria-hidden="true">1.1.1.</strong> Windows</a></li><li class="chapter-item expanded "><a href="ch1-cmake-vcpkg/1-installation/3-macos.html"><strong aria-hidden="true">1.1.2.</strong> macOS</a></li><li class="chapter-item expanded "><a href="ch1-cmake-vcpkg/1-installation/4-linux.html"><strong aria-hidden="true">1.1.3.</strong> Linux</a></li></ol></li><li class="chapter-item expanded "><a href="ch1-cmake-vcpkg/2-configuring-vscode.html"><strong aria-hidden="true">1.2.</strong> Configuring vscode</a></li><li class="chapter-item expanded "><a href="ch1-cmake-vcpkg/3-sdl2-install.html"><strong aria-hidden="true">1.3.</strong> Installing packages with VCPKG</a></li><li class="chapter-item expanded "><a href="ch1-cmake-vcpkg/4-cmakelists.html"><strong aria-hidden="true">1.4.</strong> Writing a CMakeLists</a></li></ol></li><li class="chapter-item expanded "><a href="ch2-visual-studio/1-introduction.html"><strong aria-hidden="true">2.</strong> Visual Studio</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch2-visual-studio/2-installation.html"><strong aria-hidden="true">2.1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="ch2-visual-studio/3-msbuild-manual.html"><strong aria-hidden="true">2.2.</strong> Manual dependency management</a></li><li class="chapter-item expanded "><a href="ch2-visual-studio/4-msbuild-vcpkg.html"><strong aria-hidden="true">2.3.</strong> Using VCPKG with MSBuild</a></li><li class="chapter-item expanded "><a href="ch2-visual-studio/5-cmake-vcpkg.html"><strong aria-hidden="true">2.4.</strong> Using VCPKG with CMake</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -193,7 +193,7 @@
 <pre><code class="language-console">&gt; git clone https://github.com/Microsoft/vcpkg.git
 &gt; cd vcpkg
 </code></pre>
-<p>Then run the following command to download (or compile) the executable, you pass the <code>-disableMetrics</code> argument if you wish disable usage metrics:</p>
+<p>Then run the following command to download (or compile) the executable, you can pass the <code>-disableMetrics</code> argument if you wish disable usage metrics:</p>
 <pre><code class="language-console">&gt; ./bootstrap-vcpkg.bat
 </code></pre>
 <p>Finally, you want to modify your environment variables and add:</p>
@@ -231,7 +231,7 @@ export CMAKE_GENERATOR=Ninja
 <pre><code class="language-console">% git clone https://github.com/Microsoft/vcpkg.git
 % cd vcpkg
 </code></pre>
-<p>Then run the following command to download (or compile) the executable, you pass the <code>-disableMetrics</code> argument if you wish disable usage metrics:</p>
+<p>Then run the following command to download (or compile) the executable, you can pass the <code>-disableMetrics</code> argument if you wish disable usage metrics:</p>
 <pre><code class="language-console">% ./bootstrap-vcpkg.sh
 </code></pre>
 <p>Finally, you want to add the following lines in your <code>~/.zshrc</code>:</p>
@@ -285,7 +285,7 @@ $ sudo pacman -S clang
 <pre><code class="language-console">% git clone https://github.com/Microsoft/vcpkg.git
 % cd vcpkg
 </code></pre>
-<p>Then run the following command to download (or compile) the executable, you pass the <code>-disableMetrics</code> argument if you wish disable usage metrics:</p>
+<p>Then run the following command to download (or compile) the executable, you can pass the <code>-disableMetrics</code> argument if you wish disable usage metrics:</p>
 <pre><code class="language-console">% ./bootstrap-vcpkg.sh
 </code></pre>
 <p>Finally, you want to add the following lines in your shell's RC file (<code>~/.bashrc</code> on bash, <code>~/.zshrc</code> on zsh...):</p>
@@ -563,6 +563,668 @@ int main(int, char **) {
 </details>
 <p>After pasting the code, you can simply hit <code>build</code> and run the executable, if no error shows up: congratulations, you are ready to get coding!</p>
 <h2 id="notes-about-sdl2main"><a class="header" href="#notes-about-sdl2main">Notes about SDL2main</a></h2>
+<p>When coding an app, you may not care about arguments passed through command line, and may as such be tempted to change your entry point to:</p>
+<pre><code class="language-cpp">int main()
+</code></pre>
+<p>This declaration is unfortunately incompatible with the way SDL2main works. If you do not care about arguments, and have warnings turned on for unused variables, you have two ways to ignore them:</p>
+<pre><code class="language-cpp">int main(int, char **) { // C++-only
+  // Your code
+}
+
+int main(int argc, char *argv[]) { // C/C++
+  (void)argc;
+  (void)argv;
+  // Your code
+}
+</code></pre>
+<p>The first option consists in telling the compiler: &quot;Yes, there are two arguments of these types in my signature, but I will not use them, and as such did not give them a name.” The second option is to add a no-op statement for each argument, so they are considered &quot;used&quot; despite not doing anything.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="visual-studio-1"><a class="header" href="#visual-studio-1">Visual Studio</a></h1>
+<p>This chapter will cover Microsoft's IDE Visual Studio. Note that while Visual Studio is technically available on macOS, <strong>it does not support C/C++</strong>, as such this chapter is only meant for Windows.</p>
+<p>Using the latest LLVM toolchain in place of the MSVC toolchain will also be covered.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="installation"><a class="header" href="#installation">Installation</a></h1>
+<p>In this section we will cover the installation of Visual Studio and the LLVM toolchain. Please note that the LLVM toolchain <strong>depends</strong> on the Microsoft's standard library and cannot be used on its own.</p>
+<h2 id="visual-studio-2"><a class="header" href="#visual-studio-2">Visual Studio</a></h2>
+<p>You want to head to <a href="https://visualstudio.microsoft.com/">Microsoft's website</a> and download Visual Studio 2022 Community.</p>
+<p>During the installation you want to pick the &quot;C++ Desktop development&quot; workflow. In the right panel, you want to make sure that the optional feature &quot;MSVC v143 - VS 2022 C++ x64/x86 Build Tools (Latest version)&quot; is ticked on for that workflow.</p>
+<p>Other optional features in that workflow to consider are:</p>
+<ul>
+<li><code>C++ CMake Tools For Windows</code> for CMake support,</li>
+<li><code>JIT Debugger</code>,</li>
+<li><code>C++ Profiling Tools</code>,</li>
+<li><code>C++ Address Sanitizer</code>,</li>
+<li><code>Intellicode</code></li>
+</ul>
+<p>If you want to use Microsoft's packaged LLVM toolchain, you can also tick <code>Clang Tools for Windows</code>, be mindful that they tend to lag behind LLVM's own release.</p>
+<p>If you want to use your own version of LLVM, you will need to go into the <code>Individual components</code> tab and tick the <code>C++ Clang-cl for build tool v143</code> package, this should be a very light package.</p>
+<h2 id="optional-llvm"><a class="header" href="#optional-llvm">[OPTIONAL] LLVM</a></h2>
+<p>You can grab the latest LLVM release using <a href="https://chocolatey.org/install#individual">chocolatey</a> or from <a href="https://github.com/llvm/llvm-project/releases">their GitHub</a>. If you use the latter, make sure to add the tools to your PATH.</p>
+<p>For Visual Studio to pick up the LLVM install, you need to create a file called <code>Directory.Build.props</code> containing:</p>
+<pre><code class="language-xml">&lt;Project&gt;
+  &lt;PropertyGroup&gt;
+    &lt;LLVMInstallDir&gt;c:\program files\LLVM\&lt;/LLVMInstallDir&gt;
+    &lt;LLVMToolsVersion&gt;14.0.1&lt;/LLVMToolsVersion&gt;
+  &lt;/PropertyGroup&gt;
+&lt;/Project&gt;
+</code></pre>
+<p>You need to customize the <code>LLVMInstallDir</code> if you have modified it during installation, and the <code>LLVMToolsVersion</code> depending on the one installed.</p>
+<p>The way Visual Studio scans for this file is backward from the project folder up to the drives root. In my case, I have created a <code>D:/dev/VS</code> folder that holds my projects, my templates, etc. This is also where the <code>Directory.Build.props</code> file is placed for me, so all my projects can use the LLVM toolchain if I want to.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="vs-project-with-manual-dependency-installation"><a class="header" href="#vs-project-with-manual-dependency-installation">VS Project with Manual Dependency Installation</a></h1>
+<p>In this section, we will cover how to manually install SDL2 and its subprojects in a Visual Studio project.</p>
+<h2 id="creating-the-project"><a class="header" href="#creating-the-project">Creating the project</a></h2>
+<p>Start by creating a new project with the template <code>Empty Project</code>. Give it a name and leave <code>Place solution and project in the same directory</code> ticked on.</p>
+<p>In your project, right click <code>Source Files</code>, go to <code>Add -&gt; New Item...</code> and create a new C++ file called <code>main.cpp</code>.</p>
+<p>Paste the following code:</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+int main(int, char**) {
+  std::cout &lt;&lt; &quot;Hello world\n&quot;;
+  return 0;
+}
+</code></pre>
+<p>Hit CTRL-S (save) followed by CTRL-F5 (start without a debugger) and cross your fingers to see a terminal window saying &quot;Hello world&quot;!</p>
+<p>We will start by preparing the settings for the project. This is when we will decide the toolchain, the warnings level and the standards.</p>
+<p>Right-click the project (not the Solution) and click on <code>Properties</code>. The first thing you want to do is on the top part of the window select <code>All Configurations</code> instead of <code>Debug/Release</code> and <code>All Platforms</code> instead of <code>x64/Win32</code>.</p>
+<p>In the <code>general</code> tab, you can choose your C and C++ standard. Do note that Visual Studio 2022 has a full support for the C++20 standard but that the C standard is a little less well supported (flags standard language feature as extensions, does not allow VLA, etc). On this same page, the <code>Platform Toolset</code> allows you to switch back and forth between Clang and MSVC.</p>
+<p>In the <code>vcpkg</code> tab, you can turn off <code>Use Vcpkg</code> as this will be used in a later chapter.</p>
+<p>In the <code>C/C++ - General</code> tab, put the <code>Warning Level</code> on <code>/W4</code>. This is a good baseline for warnings, but if you want to go further, you can turn on <code>Treat Warnings As Errors</code> and <code>Enable Address Sanitizer</code> to let your tools help you find bugs in advance.</p>
+<p>You can now click <code>OK</code> to save all your modifications.</p>
+<p>Lastly, press CRTL-F5 again to ensure building still works.</p>
+<h2 id="adding-the-dependencies"><a class="header" href="#adding-the-dependencies">Adding the dependencies</a></h2>
+<p>We now need to grab the development libraries for every library that we are interested into:</p>
+<ul>
+<li>For SDL2, head to <a href="https://www.libsdl.org/download-2.0.php">this website</a> and grab the file named: <code>SDL2-devel-2.0.XX-VC.zip</code></li>
+<li>For SDL2_image, head to <a href="https://www.libsdl.org/projects/SDL_image/">this website</a> and grab the file named: <code>SDL2_image-devel-2.0.X-VC.zip</code></li>
+<li>For SDL2_mixer, head to <a href="https://www.libsdl.org/projects/SDL_mixer/">this website</a> and grab the file named: <code>SDL2_mixer-devel-2.0.X-VC.zip</code></li>
+<li>For SDL2_net, head to <a href="https://www.libsdl.org/projects/SDL_net/">this website</a> and grab the file named: <code>SDL2_net-devel-2.0.X-VC.zip</code></li>
+<li>For SDL2_ttf, head to <a href="https://github.com/libsdl-org/SDL_ttf/releases">this website</a> and grab the file named: <code>SDL2_ttf-devel-2.0.X-VC.zip</code></li>
+</ul>
+<p>On Visual Studio, above the file tree, you want to click the <code>Show All Files</code> button. This will replace all the categories with a regular file tree.</p>
+<p>Right-click in the file tree, go to <code>Add -&gt; New Folder</code> and call it <code>External</code>. Right click on the newly created folder and pick <code>Open Folder in File Explorer</code>. In this folder, you want to put the content of each archive you have downloaded.</p>
+<details>
+<summary> Full file tree </summary>
+<pre><code>$(ProjectDir)\External
+├───SDL2-2.0.20
+│   ├───docs
+│   ├───include
+│   └───lib
+│       ├───x64
+│       └───x86
+├───SDL2_image-2.0.5
+│   ├───include
+│   └───lib
+│       ├───x64
+│       └───x86
+├───SDL2_mixer-2.0.4
+│   ├───include
+│   └───lib
+│       ├───x64
+│       └───x86
+├───SDL2_net-2.0.1
+│   ├───include
+│   └───lib
+│       ├───x64
+│       └───x86
+└───SDL2_ttf-2.0.18
+    ├───include
+    └───lib
+        ├───x64
+        └───x86
+</code></pre>
+</details>
+<p>After this step you can click again on <code>Show All Files</code> to disable it. You will not be able to see the <code>External</code> directory.</p>
+<p>Now we need to add the libraries to our project. Head back into its <code>properties</code> tab.</p>
+<p>In the <code>VC++ Directories</code> tab, you want to edit the <code>External Include Directories</code>. On each line, you want to add the full path to the <code>include</code> directory for each folder in <code>External</code>. The result should be:</p>
+<pre><code>$(ProjectDir)\External\SDL2-2.0.20\include
+$(ProjectDir)\External\SDL2_image-2.0.5\include
+$(ProjectDir)\External\SDL2_mixer-2.0.4\include
+$(ProjectDir)\External\SDL2_net-2.0.1\include
+$(ProjectDir)\External\SDL2_ttf-2.0.18\include
+</code></pre>
+<p>In the same tab, for each platform you want to edit the <code>Library Directories</code>. Similarly to the <code>External Include Directories</code>, on each line, you want to add the full path to the <code>lib/x64</code> directory for the <code>x64</code> platform and <code>lib/x86</code> directory for the <code>Win32</code> platform. The result should be for <code>x64</code>:</p>
+<pre><code class="language-\">$(ProjectDir)\External\SDL2-2.0.20\lib\x64
+$(ProjectDir)\External\SDL2_image-2.0.5\lib\x64
+$(ProjectDir)\External\SDL2_mixer-2.0.4\lib\x64
+$(ProjectDir)\External\SDL2_net-2.0.1\lib\x64
+$(ProjectDir)\External\SDL2_ttf-2.0.18\lib\x64
+</code></pre>
+<p>In the <code>Linker/Input</code> tab, you want to edit the <code>Additional Dependencies</code>. On each line, you want to add the name of the SDL2 library files. They should be:</p>
+<pre><code>SDL2.lib
+SDL2main.lib
+SDL2_image.lib
+SDL2_mixer.lib
+SDL2_net.lib
+SDL2_ttf.lib
+</code></pre>
+<h2 id="copying-the-dlls"><a class="header" href="#copying-the-dlls">Copying the DLLs</a></h2>
+<p>As soon as you will try to add any SDL-related code to your application, you will notice that you are no longer able to start as you are missing some DLLs.</p>
+<p>To solve this, we need to add a bit of scripting to our Visual Studio Project. When a build is successful, this script will copy the DLLs of each subprojects and place them next to the executable.</p>
+<p>Head back into your project's <code>properties</code> window, down in the <code>Build Event - Post-Build Event</code> tab. Similar to the <code>Library Directories</code>, you want to add one script per platform. For <code>x64</code> the script is the following:</p>
+<pre><code>xcopy /Y /D &quot;$(ProjectDir)External\SDL2-2.0.20\lib\x64\*.dll&quot; &quot;$(OutDir)&quot;
+xcopy /Y /D &quot;$(ProjectDir)External\SDL2_image-2.0.5\lib\x64\*.dll&quot; &quot;$(OutDir)&quot;
+xcopy /Y /D &quot;$(ProjectDir)External\SDL2_mixer-2.0.4\lib\x64\*.dll&quot; &quot;$(OutDir)&quot;
+xcopy /Y /D &quot;$(ProjectDir)External\SDL2_net-2.0.1\lib\x64\*.dll&quot; &quot;$(OutDir)&quot;
+xcopy /Y /D &quot;$(ProjectDir)External\SDL2_ttf-2.0.18\lib\x64\*.dll&quot; &quot;$(OutDir)&quot;
+</code></pre>
+<p>For <code>Win32</code>, replace the <code>x64</code> in the paths with <code>x86</code>.</p>
+<p>The <code>xcopy</code> utility performs the copy, its <code>/Y</code> argument suppresses the confirmation prompt and its <code>/D</code> argument only perform the copy if the source files are newer than the destination files.</p>
+<h2 id="testing-the-final-configuration"><a class="header" href="#testing-the-final-configuration">Testing the final configuration</a></h2>
+<p>To test the configuration, we will edit the <code>main.cpp</code> file so it initializes all the libraries, prints out their version and shuts them all down.</p>
+<details>
+<summary> Test code </summary>
+<pre><code class="language-cpp">#include &lt;SDL.h&gt;
+#include &lt;SDL_image.h&gt;
+#include &lt;SDL_mixer.h&gt;
+#include &lt;SDL_net.h&gt;
+#include &lt;SDL_ttf.h&gt;
+
+/**
+ * @brief Initializes every library.
+ */
+void init_all(void) {
+  if (0 &gt; SDL_Init(SDL_INIT_VIDEO)) {
+    SDL_Log(&quot;%s\n&quot;, SDL_GetError());
+    return;
+  }
+
+  if (0 &gt; IMG_Init(IMG_INIT_PNG)) {
+    SDL_Log(&quot;%s\n&quot;, IMG_GetError());
+    return;
+  }
+
+  if (0 &gt; Mix_Init(MIX_INIT_MP3)) {
+    SDL_Log(&quot;%s\n&quot;, Mix_GetError());
+    return;
+  }
+
+  if (0 &gt; SDLNet_Init()) {
+    SDL_Log(&quot;%s\n&quot;, SDLNet_GetError());
+    return;
+  }
+
+  if (0 &gt; TTF_Init()) {
+    SDL_Log(&quot;%s&quot;, TTF_GetError());
+    return;
+  }
+
+  SDL_Log(&quot;Every library was initialized successfully.\n&quot;);
+}
+
+/**
+ * @brief Quits all libraries.
+ */
+void quit_all(void) {
+  TTF_Quit();
+  SDLNet_Quit();
+  Mix_Quit();
+  IMG_Quit();
+  SDL_Quit();
+}
+
+/**
+ * @brief For each libraries, logs the installed version.
+ */
+void log_libraries_version(void) {
+  SDL_version sdl_compiled_version;
+  SDL_VERSION(&amp;sdl_compiled_version);
+  SDL_version sdl_linked_version;
+  SDL_GetVersion(&amp;sdl_linked_version);
+  SDL_Log(&quot;SDL:\n&quot;
+          &quot;\tCompiled against: %d.%d.%d\n&quot;
+          &quot;\tLinked against: %d.%d.%d\n&quot;,
+          sdl_compiled_version.major, sdl_compiled_version.minor,
+          sdl_compiled_version.patch, sdl_linked_version.major,
+          sdl_linked_version.minor, sdl_linked_version.patch);
+
+  SDL_version img_compiled_version;
+  SDL_IMAGE_VERSION(&amp;img_compiled_version);
+  const SDL_version *img_linked_version = IMG_Linked_Version();
+  SDL_Log(&quot;SDL Image:\n&quot;
+          &quot;\tCompiled against: %d.%d.%d\n&quot;
+          &quot;\tLinked against: %d.%d.%d\n&quot;,
+          img_compiled_version.major, img_compiled_version.minor,
+          img_compiled_version.patch, img_linked_version-&gt;major,
+          img_linked_version-&gt;minor, img_linked_version-&gt;patch);
+
+  SDL_version mix_compiled_version;
+  SDL_MIXER_VERSION(&amp;mix_compiled_version);
+  const SDL_version *mix_linked_version = Mix_Linked_Version();
+  SDL_Log(&quot;SDL Mixer:\n&quot;
+          &quot;\tCompiled against: %d.%d.%d\n&quot;
+          &quot;\tLinked against: %d.%d.%d\n&quot;,
+          mix_compiled_version.major, mix_compiled_version.minor,
+          mix_compiled_version.patch, mix_linked_version-&gt;major,
+          mix_linked_version-&gt;minor, mix_linked_version-&gt;patch);
+
+  SDLNet_version net_compiled_version;
+  SDL_NET_VERSION(&amp;net_compiled_version);
+  const SDLNet_version *net_linked_version = SDLNet_Linked_Version();
+  SDL_Log(&quot;SDL Net:\n&quot;
+          &quot;\tCompiled against: %d.%d.%d\n&quot;
+          &quot;\tLinked against: %d.%d.%d\n&quot;,
+          net_compiled_version.major, net_compiled_version.minor,
+          net_compiled_version.patch, net_linked_version-&gt;major,
+          net_linked_version-&gt;minor, net_linked_version-&gt;patch);
+
+  SDL_version ttf_compiled_version;
+  TTF_VERSION(&amp;ttf_compiled_version);
+  const SDL_version *ttf_linked_version = TTF_Linked_Version();
+  SDL_Log(&quot;SDL TTF:\n&quot;
+          &quot;\tCompiled against: %d.%d.%d\n&quot;
+          &quot;\tLinked against: %d.%d.%d\n&quot;,
+          ttf_compiled_version.major, ttf_compiled_version.minor,
+          ttf_compiled_version.patch, ttf_linked_version-&gt;major,
+          ttf_linked_version-&gt;minor, ttf_linked_version-&gt;patch);
+}
+
+int main(int, char **) {
+  init_all();
+  log_libraries_version();
+  quit_all();
+
+  return 0;
+}
+</code></pre>
+</details>
+<p>After pasting the code, hit CTRL-S followed by CTRL-F5 to run the executable, if no error shows up: congratulations, you are ready to get coding!</p>
+<h2 id="notes-about-sdl2main-1"><a class="header" href="#notes-about-sdl2main-1">Notes about SDL2main</a></h2>
+<p>When coding an app, you may not care about arguments passed through command line, and may as such be tempted to change your entry point to:</p>
+<pre><code class="language-cpp">int main()
+</code></pre>
+<p>This declaration is unfortunately incompatible with the way SDL2main works. If you do not care about arguments, and have warnings turned on for unused variables, you have two ways to ignore them:</p>
+<pre><code class="language-cpp">int main(int, char **) { // C++-only
+  // Your code
+}
+
+int main(int argc, char *argv[]) { // C/C++
+  (void)argc;
+  (void)argv;
+  // Your code
+}
+</code></pre>
+<p>The first option consists in telling the compiler: &quot;Yes, there are two arguments of these types in my signature, but I will not use them, and as such did not give them a name.” The second option is to add a no-op statement for each argument, so they are considered &quot;used&quot; despite not doing anything.</p>
+<p>If you are using LLVM, you may have noticed the warning: <code>warning : found both wmain and main; using latter</code>. This can be solved by setting the <code>SubSystem</code> in <code>preferences -&gt; Linker - System</code> to <code>Windows</code>. But be aware that doing so will suppress all console output.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="vs-project-with-vcpkg"><a class="header" href="#vs-project-with-vcpkg">VS Project with VCPKG</a></h1>
+<p>In this section, we will cover how to install and use VCPKG to download all the libraries for a Visual Studio project.</p>
+<h2 id="installing-vcpkg"><a class="header" href="#installing-vcpkg">Installing VCPKG</a></h2>
+<p>We will use Chocolatey to install CMake, Ninja and git, which are needed to use VCPKG.</p>
+<p>First, head over to <a href="https://chocolatey.org/install#individual">Chocolatey's website</a> and follow their install instructions.</p>
+<p>Once Chocolatey is installed, open a fresh elevated prompt and run:</p>
+<pre><code class="language-console">&gt; choco install cmake git ninja
+</code></pre>
+<p>Once the installation is done, navigate to the folder that will host the VCPKG installation and run:</p>
+<pre><code class="language-console">&gt; git clone https://github.com/Microsoft/vcpkg.git
+&gt; cd vcpkg
+</code></pre>
+<p>Then run the following command to download (or compile) the executable, you can pass the <code>-disableMetrics</code> argument if you wish disable usage metrics:</p>
+<pre><code class="language-console">&gt; ./bootstrap-vcpkg.bat
+</code></pre>
+<p>Finally, you want to modify your environment variables and add:</p>
+<pre><code>VCPKG_ROOT              C:/Path/To/VCPKG
+VCPKG_DEFAULT_TRIPLET   x64-windows
+</code></pre>
+<p>And update your PATH by adding a new entry containing: <code>%VCPKG_ROOT%</code></p>
+<p>NB: VCPKG can be on any drive, not necessarily on the C drive.</p>
+<h2 id="installing-libraries-with-vcpkg"><a class="header" href="#installing-libraries-with-vcpkg">Installing libraries with VCPKG</a></h2>
+<p>With VCPKG in your path, it is pretty straight forward to install libraries and make them available to Visual Studio. As Visual Studio ships by default with both a <code>x64</code> and a <code>x86</code> configuration, we will install both.</p>
+<p>Start by running the following command:</p>
+<pre><code class="language-console">&gt; vcpkg search sdl2
+</code></pre>
+<p>This will list all the SDL2 packages and their available &quot;features&quot; in square brackets. For this tutorial, we will stick to the default set of features, but if you need more, simply append the list of features after the name. For example, <code>&quot;sdl2-image[libjpeg-turbo,libwebp]&quot;</code> will add jpeg and webp support to SDL2_image.</p>
+<p>Run the following commands to install all the packages for both x86 and x64:</p>
+<pre><code class="language-console">&gt; vcpkg instal --triplet=x86-windows sdl2 sdl2-image sdl2-mixer sdl2-net sdl2-ttf
+&gt; vcpkg instal --triplet=x64-windows sdl2 sdl2-image sdl2-mixer sdl2-net sdl2-ttf
+</code></pre>
+<p>Finally, let Visual Studio know about the newly installed packages with:</p>
+<pre><code class="language-console">&gt; vcpkg integrate install
+</code></pre>
+<h2 id="creating-a-project"><a class="header" href="#creating-a-project">Creating a project</a></h2>
+<p>SDL2 is one of the handful of libraries that need additional setup in Visual Studio. So let's take that opportunity to take a tour of all the useful options!</p>
+<p>Start by creating a new project with the template <code>Empty Project</code>. Give it a name and leave <code>Place solution and project in the same directory</code> ticked on.</p>
+<p>Right-click the project (not the Solution) and click on <code>Properties</code>. The first thing you want to do is on the top part of the window select <code>All Configurations</code> instead of <code>Debug/Release</code>.</p>
+<p>In the <code>general</code> tab, you can choose your C and C++ standard. Do note that Visual Studio 2022 has a full support for the C++20 standard but that the C standard is a little less well supported (flags standard language feature as extensions, does not allow VLA, etc). On this same page, the <code>Platform Toolset</code> allows you to switch back and forth between Clang and MSVC.</p>
+<p>In the <code>C/C++ - General</code> tab, put the <code>Warning Level</code> on <code>/W4</code>. This is a good baseline for warnings, but if you want to go further, you can turn on <code>Treat Warnings As Errors</code> and <code>Enable Address Sanitizer</code> to let your tools help you find bugs in advance.</p>
+<p>In the <code>Linker - Input</code> tab, you want a different configuration for Debug and Release:</p>
+<ul>
+<li>For Debug, add <code>SDL2maind.lib</code> to <code>Additional Dependencies</code></li>
+<li>For Release, add <code>SDL2main.lib</code> to <code>Additional Dependencies</code></li>
+</ul>
+<p>Finally, to test the configuration, right click <code>Source Files</code>, go to <code>Add -&gt; New Item...</code> and create a new C++ file called <code>main.cpp</code>. We will make a simple main function that initializes all the libraries, prints out their version and shuts them all down.</p>
+<details>
+<summary> Test code </summary>
+<pre><code class="language-cpp">#include &lt;SDL2/SDL.h&gt;
+#include &lt;SDL2/SDL_image.h&gt;
+#include &lt;SDL2/SDL_mixer.h&gt;
+#include &lt;SDL2/SDL_net.h&gt;
+#include &lt;SDL2/SDL_ttf.h&gt;
+
+/**
+ * @brief Initializes every library.
+ */
+void init_all(void) {
+  if (0 &gt; SDL_Init(SDL_INIT_VIDEO)) {
+    SDL_Log(&quot;%s\n&quot;, SDL_GetError());
+    return;
+  }
+
+  if (0 &gt; IMG_Init(IMG_INIT_PNG)) {
+    SDL_Log(&quot;%s\n&quot;, IMG_GetError());
+    return;
+  }
+
+  if (0 &gt; Mix_Init(MIX_INIT_MP3)) {
+    SDL_Log(&quot;%s\n&quot;, Mix_GetError());
+    return;
+  }
+
+  if (0 &gt; SDLNet_Init()) {
+    SDL_Log(&quot;%s\n&quot;, SDLNet_GetError());
+    return;
+  }
+
+  if (0 &gt; TTF_Init()) {
+    SDL_Log(&quot;%s&quot;, TTF_GetError());
+    return;
+  }
+
+  SDL_Log(&quot;Every library was initialized successfully.\n&quot;);
+}
+
+/**
+ * @brief Quits all libraries.
+ */
+void quit_all(void) {
+  TTF_Quit();
+  SDLNet_Quit();
+  Mix_Quit();
+  IMG_Quit();
+  SDL_Quit();
+}
+
+/**
+ * @brief For each libraries, logs the installed version.
+ */
+void log_libraries_version(void) {
+  SDL_version sdl_compiled_version;
+  SDL_VERSION(&amp;sdl_compiled_version);
+  SDL_version sdl_linked_version;
+  SDL_GetVersion(&amp;sdl_linked_version);
+  SDL_Log(&quot;SDL:\n&quot;
+          &quot;\tCompiled against: %d.%d.%d\n&quot;
+          &quot;\tLinked against: %d.%d.%d\n&quot;,
+          sdl_compiled_version.major, sdl_compiled_version.minor,
+          sdl_compiled_version.patch, sdl_linked_version.major,
+          sdl_linked_version.minor, sdl_linked_version.patch);
+
+  SDL_version img_compiled_version;
+  SDL_IMAGE_VERSION(&amp;img_compiled_version);
+  const SDL_version *img_linked_version = IMG_Linked_Version();
+  SDL_Log(&quot;SDL Image:\n&quot;
+          &quot;\tCompiled against: %d.%d.%d\n&quot;
+          &quot;\tLinked against: %d.%d.%d\n&quot;,
+          img_compiled_version.major, img_compiled_version.minor,
+          img_compiled_version.patch, img_linked_version-&gt;major,
+          img_linked_version-&gt;minor, img_linked_version-&gt;patch);
+
+  SDL_version mix_compiled_version;
+  SDL_MIXER_VERSION(&amp;mix_compiled_version);
+  const SDL_version *mix_linked_version = Mix_Linked_Version();
+  SDL_Log(&quot;SDL Mixer:\n&quot;
+          &quot;\tCompiled against: %d.%d.%d\n&quot;
+          &quot;\tLinked against: %d.%d.%d\n&quot;,
+          mix_compiled_version.major, mix_compiled_version.minor,
+          mix_compiled_version.patch, mix_linked_version-&gt;major,
+          mix_linked_version-&gt;minor, mix_linked_version-&gt;patch);
+
+  SDLNet_version net_compiled_version;
+  SDL_NET_VERSION(&amp;net_compiled_version);
+  const SDLNet_version *net_linked_version = SDLNet_Linked_Version();
+  SDL_Log(&quot;SDL Net:\n&quot;
+          &quot;\tCompiled against: %d.%d.%d\n&quot;
+          &quot;\tLinked against: %d.%d.%d\n&quot;,
+          net_compiled_version.major, net_compiled_version.minor,
+          net_compiled_version.patch, net_linked_version-&gt;major,
+          net_linked_version-&gt;minor, net_linked_version-&gt;patch);
+
+  SDL_version ttf_compiled_version;
+  TTF_VERSION(&amp;ttf_compiled_version);
+  const SDL_version *ttf_linked_version = TTF_Linked_Version();
+  SDL_Log(&quot;SDL TTF:\n&quot;
+          &quot;\tCompiled against: %d.%d.%d\n&quot;
+          &quot;\tLinked against: %d.%d.%d\n&quot;,
+          ttf_compiled_version.major, ttf_compiled_version.minor,
+          ttf_compiled_version.patch, ttf_linked_version-&gt;major,
+          ttf_linked_version-&gt;minor, ttf_linked_version-&gt;patch);
+}
+
+int main(int, char **) {
+  init_all();
+  log_libraries_version();
+  quit_all();
+
+  return 0;
+}
+</code></pre>
+</details>
+<h2 id="notes-about-sdl2main-2"><a class="header" href="#notes-about-sdl2main-2">Notes about SDL2main</a></h2>
+<p>When coding an app, you may not care about arguments passed through command line, and may as such be tempted to change your entry point to:</p>
+<pre><code class="language-cpp">int main()
+</code></pre>
+<p>This declaration is unfortunately incompatible with the way SDL2main works. If you do not care about arguments, and have warnings turned on for unused variables, you have two ways to ignore them:</p>
+<pre><code class="language-cpp">int main(int, char **) { // C++-only
+  // Your code
+}
+
+int main(int argc, char *argv[]) { // C/C++
+  (void)argc;
+  (void)argv;
+  // Your code
+}
+</code></pre>
+<p>The first option consists in telling the compiler: &quot;Yes, there are two arguments of these types in my signature, but I will not use them, and as such did not give them a name.” The second option is to add a no-op statement for each argument, so they are considered &quot;used&quot; despite not doing anything.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="vs-cmake-project-with-vcpkg"><a class="header" href="#vs-cmake-project-with-vcpkg">VS CMake Project with VCPKG</a></h1>
+<p>In this section, we will cover how to install and use VCPKG to download all the libraries for CMake project inside Visual Studio.</p>
+<h2 id="installing-vcpkg-1"><a class="header" href="#installing-vcpkg-1">Installing VCPKG</a></h2>
+<p>We will use Chocolatey to install CMake, Ninja and git, which are needed to use VCPKG.</p>
+<p>First, head over to <a href="https://chocolatey.org/install#individual">Chocolatey's website</a> and follow their install instructions.</p>
+<p>Once Chocolatey is installed, open a fresh elevated prompt and run:</p>
+<pre><code class="language-console">&gt; choco install cmake git ninja
+</code></pre>
+<p>Once the installation is done, navigate to the folder that will host the VCPKG installation and run:</p>
+<pre><code class="language-console">&gt; git clone https://github.com/Microsoft/vcpkg.git
+&gt; cd vcpkg
+</code></pre>
+<p>Then run the following command to download (or compile) the executable, you can pass the <code>-disableMetrics</code> argument if you wish disable usage metrics:</p>
+<pre><code class="language-console">&gt; ./bootstrap-vcpkg.bat
+</code></pre>
+<p>Finally, you want to modify your environment variables and add:</p>
+<pre><code>VCPKG_ROOT              C:/Path/To/VCPKG
+VCPKG_DEFAULT_TRIPLET   x64-windows
+</code></pre>
+<p>And update your PATH by adding a new entry containing: <code>%VCPKG_ROOT%</code></p>
+<p>NB: VCPKG can be on any drive, not necessarily on the C drive.</p>
+<h2 id="installing-libraries-with-vcpkg-1"><a class="header" href="#installing-libraries-with-vcpkg-1">Installing libraries with VCPKG</a></h2>
+<p>With VCPKG in your path, it is pretty straight forward to install libraries and use them in CMake. As Visual Studio ships by default with both a <code>x64</code> and a <code>x86</code> configuration, we will install both.</p>
+<p>Start by running the following command:</p>
+<pre><code class="language-console">&gt; vcpkg search sdl2
+</code></pre>
+<p>This will list all the SDL2 packages and their available &quot;features&quot; in square brackets. For this tutorial, we will stick to the default set of features, but if you need more, simply append the list of features after the name. For example, <code>&quot;sdl2-image[libjpeg-turbo,libwebp]&quot;</code> will add jpeg and webp support to SDL2_image.</p>
+<p>Run the following commands to install all the packages for both x86 and x64:</p>
+<pre><code class="language-console">&gt; vcpkg instal --triplet=x86-windows sdl2 sdl2-image sdl2-mixer sdl2-net sdl2-ttf
+&gt; vcpkg instal --triplet=x64-windows sdl2 sdl2-image sdl2-mixer sdl2-net sdl2-ttf
+</code></pre>
+<p>Finally, run this command:</p>
+<pre><code class="language-console">&gt; vcpkg integrate install
+</code></pre>
+<h2 id="creating-the-project-1"><a class="header" href="#creating-the-project-1">Creating the project</a></h2>
+<p>Start by creating a new project with the template <code>CMake Project</code>. Give it a name and leave <code>Place solution and project in the same directory</code> ticked on.</p>
+<p>Before generating the cache, you want to head over into <code>CMakePresets.json</code>, and in the <code>windows-base</code> preset add the following block inside <code>&quot;cacheVariables&quot;</code>:</p>
+<pre><code class="language-json">&quot;CMAKE_TOOLCHAIN_FILE&quot;: {
+  &quot;value&quot;: &quot;$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake&quot;,
+  &quot;type&quot;: &quot;FILEPATH&quot;
+}
+</code></pre>
+<p>If the cache was generated beforehand, you may need to delete the <code>out</code> directory for the toolchain file to be taken into account.</p>
+<p>Next, in the <code>CMakeLists.txt</code> you want to add the following lines before the <code>add_executable</code> statement:</p>
+<pre><code class="language-cmake">find_package(SDL2 CONFIG REQUIRED)
+find_package(sdl2-image CONFIG REQUIRED)
+find_package(sdl2-mixer CONFIG REQUIRED)
+find_package(sdl2-net CONFIG REQUIRED)
+find_package(sdl2-ttf CONFIG REQUIRED)
+</code></pre>
+<p>This will instruct CMake to search for all the SDL2 libraries, and that they are required (configuration should fail if they are not found).</p>
+<p>After the <code>add_executable</code> statement, you want to add the following lines:</p>
+<pre><code class="language-cmake">target_link_libraries(
+  CMakeTarget
+  PRIVATE
+  SDL2::SDL2
+  SDL2::SDL2main
+  SDL2::SDL2_image
+  SDL2::SDL2_mixer
+  SDL2::SDL2_net
+  SDL2::SDL2_ttf)
+</code></pre>
+<p>This will tell CMake to link all the libraries to your application.</p>
+<p>Your <code>CMakeLists.txt</code> should now look like this:</p>
+<pre><code class="language-cmake">cmake_minimum_required (VERSION 3.8)
+
+project (&quot;SDL CMake Tutorial&quot;)
+
+find_package(SDL2 CONFIG REQUIRED)
+find_package(sdl2-image CONFIG REQUIRED)
+find_package(sdl2-mixer CONFIG REQUIRED)
+find_package(sdl2-net CONFIG REQUIRED)
+find_package(sdl2-ttf CONFIG REQUIRED)
+
+# Add source to this project's executable.
+add_executable (CMakeTarget &quot;SDL CMake Tutorial.cpp&quot; &quot;SDL CMake Tutorial.h&quot;)
+
+target_link_libraries(
+  CMakeTarget
+  PRIVATE
+  SDL2::SDL2
+  SDL2::SDL2main
+  SDL2::SDL2_image
+  SDL2::SDL2_mixer
+  SDL2::SDL2_net
+  SDL2::SDL2_ttf)
+</code></pre>
+<p>Lastly, we will replace the content of your cpp file to initialize all the libraries, print out their version and shut them all down, ensuring everything worked correctly.</p>
+<details>
+<summary> Test code </summary>
+<pre><code class="language-cpp">#include &lt;SDL.h&gt;
+#include &lt;SDL_image.h&gt;
+#include &lt;SDL_mixer.h&gt;
+#include &lt;SDL_net.h&gt;
+#include &lt;SDL_ttf.h&gt;
+
+/**
+ * @brief Initializes every library.
+ */
+void init_all(void) {
+  if (0 &gt; SDL_Init(SDL_INIT_VIDEO)) {
+    SDL_Log(&quot;%s\n&quot;, SDL_GetError());
+    return;
+  }
+
+  if (0 &gt; IMG_Init(IMG_INIT_PNG)) {
+    SDL_Log(&quot;%s\n&quot;, IMG_GetError());
+    return;
+  }
+
+  if (0 &gt; Mix_Init(MIX_INIT_MP3)) {
+    SDL_Log(&quot;%s\n&quot;, Mix_GetError());
+    return;
+  }
+
+  if (0 &gt; SDLNet_Init()) {
+    SDL_Log(&quot;%s\n&quot;, SDLNet_GetError());
+    return;
+  }
+
+  if (0 &gt; TTF_Init()) {
+    SDL_Log(&quot;%s&quot;, TTF_GetError());
+    return;
+  }
+
+  SDL_Log(&quot;Every library was initialized successfully.\n&quot;);
+}
+
+/**
+ * @brief Quits all libraries.
+ */
+void quit_all(void) {
+  TTF_Quit();
+  SDLNet_Quit();
+  Mix_Quit();
+  IMG_Quit();
+  SDL_Quit();
+}
+
+/**
+ * @brief For each libraries, logs the installed version.
+ */
+void log_libraries_version(void) {
+  SDL_version sdl_compiled_version;
+  SDL_VERSION(&amp;sdl_compiled_version);
+  SDL_version sdl_linked_version;
+  SDL_GetVersion(&amp;sdl_linked_version);
+  SDL_Log(&quot;SDL:\n&quot;
+          &quot;\tCompiled against: %d.%d.%d\n&quot;
+          &quot;\tLinked against: %d.%d.%d\n&quot;,
+          sdl_compiled_version.major, sdl_compiled_version.minor,
+          sdl_compiled_version.patch, sdl_linked_version.major,
+          sdl_linked_version.minor, sdl_linked_version.patch);
+
+  SDL_version img_compiled_version;
+  SDL_IMAGE_VERSION(&amp;img_compiled_version);
+  const SDL_version *img_linked_version = IMG_Linked_Version();
+  SDL_Log(&quot;SDL Image:\n&quot;
+          &quot;\tCompiled against: %d.%d.%d\n&quot;
+          &quot;\tLinked against: %d.%d.%d\n&quot;,
+          img_compiled_version.major, img_compiled_version.minor,
+          img_compiled_version.patch, img_linked_version-&gt;major,
+          img_linked_version-&gt;minor, img_linked_version-&gt;patch);
+
+  SDL_version mix_compiled_version;
+  SDL_MIXER_VERSION(&amp;mix_compiled_version);
+  const SDL_version *mix_linked_version = Mix_Linked_Version();
+  SDL_Log(&quot;SDL Mixer:\n&quot;
+          &quot;\tCompiled against: %d.%d.%d\n&quot;
+          &quot;\tLinked against: %d.%d.%d\n&quot;,
+          mix_compiled_version.major, mix_compiled_version.minor,
+          mix_compiled_version.patch, mix_linked_version-&gt;major,
+          mix_linked_version-&gt;minor, mix_linked_version-&gt;patch);
+
+  SDLNet_version net_compiled_version;
+  SDL_NET_VERSION(&amp;net_compiled_version);
+  const SDLNet_version *net_linked_version = SDLNet_Linked_Version();
+  SDL_Log(&quot;SDL Net:\n&quot;
+          &quot;\tCompiled against: %d.%d.%d\n&quot;
+          &quot;\tLinked against: %d.%d.%d\n&quot;,
+          net_compiled_version.major, net_compiled_version.minor,
+          net_compiled_version.patch, net_linked_version-&gt;major,
+          net_linked_version-&gt;minor, net_linked_version-&gt;patch);
+
+  SDL_version ttf_compiled_version;
+  TTF_VERSION(&amp;ttf_compiled_version);
+  const SDL_version *ttf_linked_version = TTF_Linked_Version();
+  SDL_Log(&quot;SDL TTF:\n&quot;
+          &quot;\tCompiled against: %d.%d.%d\n&quot;
+          &quot;\tLinked against: %d.%d.%d\n&quot;,
+          ttf_compiled_version.major, ttf_compiled_version.minor,
+          ttf_compiled_version.patch, ttf_linked_version-&gt;major,
+          ttf_linked_version-&gt;minor, ttf_linked_version-&gt;patch);
+}
+
+int main(int, char **) {
+  init_all();
+  log_libraries_version();
+  quit_all();
+}
+</code></pre>
+</details>
+<p>After pasting the code and saving the file, press F5 to run the executable, if no error shows up: congratulations, you are ready to get coding!</p>
+<h2 id="notes-about-sdl2main-3"><a class="header" href="#notes-about-sdl2main-3">Notes about SDL2main</a></h2>
 <p>When coding an app, you may not care about arguments passed through command line, and may as such be tempted to change your entry point to:</p>
 <pre><code class="language-cpp">int main()
 </code></pre>

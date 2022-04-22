@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>CMake, VCPKG and VSCode: the silver bullet - SDL Tutorial</title>
+        <title>Configuring vscode - SDL Tutorial</title>
         <!-- Custom HTML head -->
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
@@ -75,7 +75,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Introduction</a></li><li class="chapter-item expanded "><a href="../ch1-cmake-vcpkg/index.html" class="active"><strong aria-hidden="true">1.</strong> CMake, VCPKG and VSCode: the silver bullet</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch1-cmake-vcpkg/1-installation/1-introduction.html"><strong aria-hidden="true">1.1.</strong> Installation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch1-cmake-vcpkg/1-installation/2-windows.html"><strong aria-hidden="true">1.1.1.</strong> Windows</a></li><li class="chapter-item expanded "><a href="../ch1-cmake-vcpkg/1-installation/3-macos.html"><strong aria-hidden="true">1.1.2.</strong> macOS</a></li><li class="chapter-item expanded "><a href="../ch1-cmake-vcpkg/1-installation/4-linux.html"><strong aria-hidden="true">1.1.3.</strong> Linux</a></li></ol></li><li class="chapter-item expanded "><a href="../ch1-cmake-vcpkg/2-configuring-vscode.html"><strong aria-hidden="true">1.2.</strong> Configuring vscode</a></li><li class="chapter-item expanded "><a href="../ch1-cmake-vcpkg/3-sdl2-install.html"><strong aria-hidden="true">1.3.</strong> Installing packages with VCPKG</a></li><li class="chapter-item expanded "><a href="../ch1-cmake-vcpkg/4-cmakelists.html"><strong aria-hidden="true">1.4.</strong> Writing a CMakeLists</a></li></ol></li><li class="chapter-item expanded "><a href="../ch2-visual-studio/1-introduction.html"><strong aria-hidden="true">2.</strong> Visual Studio</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch2-visual-studio/2-installation.html"><strong aria-hidden="true">2.1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="../ch2-visual-studio/3-msbuild-manual.html"><strong aria-hidden="true">2.2.</strong> Manual dependency management</a></li><li class="chapter-item expanded "><a href="../ch2-visual-studio/4-msbuild-vcpkg.html"><strong aria-hidden="true">2.3.</strong> Using VCPKG with MSBuild</a></li><li class="chapter-item expanded "><a href="../ch2-visual-studio/5-cmake-vcpkg.html"><strong aria-hidden="true">2.4.</strong> Using VCPKG with CMake</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Introduction</a></li><li class="chapter-item expanded "><a href="../ch1-cmake-vcpkg/index.html"><strong aria-hidden="true">1.</strong> CMake, VCPKG and VSCode: the silver bullet</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch1-cmake-vcpkg/1-installation/1-introduction.html"><strong aria-hidden="true">1.1.</strong> Installation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch1-cmake-vcpkg/1-installation/2-windows.html"><strong aria-hidden="true">1.1.1.</strong> Windows</a></li><li class="chapter-item expanded "><a href="../ch1-cmake-vcpkg/1-installation/3-macos.html"><strong aria-hidden="true">1.1.2.</strong> macOS</a></li><li class="chapter-item expanded "><a href="../ch1-cmake-vcpkg/1-installation/4-linux.html"><strong aria-hidden="true">1.1.3.</strong> Linux</a></li></ol></li><li class="chapter-item expanded "><a href="../ch1-cmake-vcpkg/2-configuring-vscode.html" class="active"><strong aria-hidden="true">1.2.</strong> Configuring vscode</a></li><li class="chapter-item expanded "><a href="../ch1-cmake-vcpkg/3-sdl2-install.html"><strong aria-hidden="true">1.3.</strong> Installing packages with VCPKG</a></li><li class="chapter-item expanded "><a href="../ch1-cmake-vcpkg/4-cmakelists.html"><strong aria-hidden="true">1.4.</strong> Writing a CMakeLists</a></li></ol></li><li class="chapter-item expanded "><a href="../ch2-visual-studio/1-introduction.html"><strong aria-hidden="true">2.</strong> Visual Studio</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch2-visual-studio/2-installation.html"><strong aria-hidden="true">2.1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="../ch2-visual-studio/3-msbuild-manual.html"><strong aria-hidden="true">2.2.</strong> Manual dependency management</a></li><li class="chapter-item expanded "><a href="../ch2-visual-studio/4-msbuild-vcpkg.html"><strong aria-hidden="true">2.3.</strong> Using VCPKG with MSBuild</a></li><li class="chapter-item expanded "><a href="../ch2-visual-studio/5-cmake-vcpkg.html"><strong aria-hidden="true">2.4.</strong> Using VCPKG with CMake</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -134,25 +134,51 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="cmake-and-vcpkg-in-visual-studio-code"><a class="header" href="#cmake-and-vcpkg-in-visual-studio-code">CMake and VCPKG in Visual Studio Code</a></h1>
-<p>This chapter will cover a solution that should work regardless of your OS.</p>
-<p>This solution uses:</p>
+                        <h1 id="configuring-visual-studio-code"><a class="header" href="#configuring-visual-studio-code">Configuring Visual Studio Code</a></h1>
+<p>In this section, we will go through the extensions needed in order to use CMake and vcpkg and get syntax highlighting in C/C++.</p>
+<h2 id="extensions"><a class="header" href="#extensions">Extensions</a></h2>
+<p>Head over the extension menu to the left, you want the following extensions:</p>
 <ul>
-<li>Ninja as a build system. (MSBuild on Windows)</li>
-<li>CMake to generate build system files.</li>
-<li>Microsoft VCPKG to grab all the libraries.</li>
-<li>Visual Studio Code to write the code and interface with CMake</li>
+<li><code>ms-vscode.cpptools</code>, provides C/C++ support</li>
+<li><code>ms-vscode.cmake-tools</code>, provides CMake commands</li>
+<li><code>twxs.cmake</code>, provide CMakeLists.txt syntax highlighting, it is planned to be integrated in <code>cmake-tools</code> version 1.11</li>
 </ul>
-<p>It should be noted that while this solution works on Windows, macOS and Linux it is <strong>not</strong> necessarily the best solution. For example, if you are on Windows, Microsoft Visual Studio provides an overall better experience and supports all the aforementioned tools, similarly if you have access to a JetBrains CLion license, you may prefer using it instead.</p>
+<h2 id="settings"><a class="header" href="#settings">Settings</a></h2>
+<p>Now that the extensions are installed, press CTRL-SHIFT-P (CMD-SHIFT-P on macOS) and type <code>Preferences: Open Settings (JSON)</code>.</p>
+<p>You can then add the following entries:</p>
+<pre><code class="language-json">{
+  // Previous settings here
+
+  // C/C++
+  &quot;C_Cpp.default.cStandard&quot;: &quot;c17&quot;,
+  &quot;C_Cpp.default.cppStandard&quot;: &quot;c++20&quot;,
+  &quot;C_Cpp.default.configurationProvider&quot;: &quot;ms-vscode.cmake-tools&quot;,
+
+  // CMake
+  &quot;cmake.configureOnOpen&quot;: false,
+  &quot;cmake.generator&quot;: &quot;Ninja&quot; // Remove this option on Windows
+}
+</code></pre>
+<h2 id="configuring-cmake-kits"><a class="header" href="#configuring-cmake-kits">Configuring CMake Kits</a></h2>
+<p>For this part, you will need to open a folder with an existing <code>CMakeLists.txt</code> in order for the extension to show up.</p>
+<p>Start by opening an empty folder, pressing CTRL-SHIFT-P (CMD-SHIFT-P on macOS) and type <code>CMake: Quick Start</code>, a name for the project, and select <code>Executable</code>.</p>
+<p>Once the project gets created, you will start seeing new options in the blue status bar at the bottom, and will also be prompted to select a &quot;kit&quot; (you may need to <code>[Scan for kits]</code> first).</p>
+<p>If at this step no kit appears even after scanning, ensure that you have installed a compiler.</p>
+<p>We now want to add a new kit that will make use of vcpkg. Start by opening the kits' file by pressing CTRL-SHIFT-P (CMD-SHIFT-P on macOS) and typing <code>CMake: Edit User-Local CMake Kits</code>.</p>
+<p>Find the scanned kit using the compiler you want to use and make a copy of it. Note that if you edit a scanned kit, your modifications may be erased if you rescan kits later.</p>
+<p>Edit the kit by changing its name (for example by adding <code>(vcpkg)</code> at the end of it) and adding a new field:</p>
+<pre><code class="language-json">&quot;toolchainFile&quot;: &quot;[/path/to/vcpkg]/scripts/buildsystems/vcpkg.cmake&quot;,
+</code></pre>
+<p>With the new kit saved, on the status bar, click on <code>No Active Kit</code> to select your new kit, then on the <code>build</code> right next to the kit to ensure the configuration and build works.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../ch1-cmake-vcpkg/1-installation/4-linux.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                            <a rel="next" href="../ch1-cmake-vcpkg/1-installation/1-introduction.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../ch1-cmake-vcpkg/3-sdl2-install.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         <div style="clear: both"></div>
@@ -161,10 +187,10 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../ch1-cmake-vcpkg/1-installation/4-linux.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                    <a rel="next" href="../ch1-cmake-vcpkg/1-installation/1-introduction.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../ch1-cmake-vcpkg/3-sdl2-install.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
