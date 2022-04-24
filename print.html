@@ -76,7 +76,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded "><a href="ch1-cmake-vcpkg/index.html"><strong aria-hidden="true">1.</strong> CMake, VCPKG and VSCode: the silver bullet</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch1-cmake-vcpkg/1-installation/1-introduction.html"><strong aria-hidden="true">1.1.</strong> Installation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch1-cmake-vcpkg/1-installation/2-windows.html"><strong aria-hidden="true">1.1.1.</strong> Windows</a></li><li class="chapter-item expanded "><a href="ch1-cmake-vcpkg/1-installation/3-macos.html"><strong aria-hidden="true">1.1.2.</strong> macOS</a></li><li class="chapter-item expanded "><a href="ch1-cmake-vcpkg/1-installation/4-linux.html"><strong aria-hidden="true">1.1.3.</strong> Linux</a></li></ol></li><li class="chapter-item expanded "><a href="ch1-cmake-vcpkg/2-configuring-vscode.html"><strong aria-hidden="true">1.2.</strong> Configuring vscode</a></li><li class="chapter-item expanded "><a href="ch1-cmake-vcpkg/3-sdl2-install.html"><strong aria-hidden="true">1.3.</strong> Installing packages with VCPKG</a></li><li class="chapter-item expanded "><a href="ch1-cmake-vcpkg/4-cmakelists.html"><strong aria-hidden="true">1.4.</strong> Writing a CMakeLists</a></li></ol></li><li class="chapter-item expanded "><a href="ch2-visual-studio/1-introduction.html"><strong aria-hidden="true">2.</strong> Visual Studio</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch2-visual-studio/2-installation.html"><strong aria-hidden="true">2.1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="ch2-visual-studio/3-msbuild-manual.html"><strong aria-hidden="true">2.2.</strong> Manual dependency management</a></li><li class="chapter-item expanded "><a href="ch2-visual-studio/4-msbuild-vcpkg.html"><strong aria-hidden="true">2.3.</strong> Using VCPKG with MSBuild</a></li><li class="chapter-item expanded "><a href="ch2-visual-studio/5-cmake-vcpkg.html"><strong aria-hidden="true">2.4.</strong> Using VCPKG with CMake</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded "><a href="ch1-cmake-vcpkg/index.html"><strong aria-hidden="true">1.</strong> CMake, VCPKG and VSCode: the silver bullet</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch1-cmake-vcpkg/1-installation/1-introduction.html"><strong aria-hidden="true">1.1.</strong> Installation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch1-cmake-vcpkg/1-installation/2-windows.html"><strong aria-hidden="true">1.1.1.</strong> Windows</a></li><li class="chapter-item expanded "><a href="ch1-cmake-vcpkg/1-installation/3-macos.html"><strong aria-hidden="true">1.1.2.</strong> macOS</a></li><li class="chapter-item expanded "><a href="ch1-cmake-vcpkg/1-installation/4-linux.html"><strong aria-hidden="true">1.1.3.</strong> Linux</a></li></ol></li><li class="chapter-item expanded "><a href="ch1-cmake-vcpkg/2-configuring-vscode.html"><strong aria-hidden="true">1.2.</strong> Configuring vscode</a></li><li class="chapter-item expanded "><a href="ch1-cmake-vcpkg/3-sdl2-install.html"><strong aria-hidden="true">1.3.</strong> Installing packages with VCPKG</a></li><li class="chapter-item expanded "><a href="ch1-cmake-vcpkg/4-cmakelists.html"><strong aria-hidden="true">1.4.</strong> Writing a CMakeLists</a></li></ol></li><li class="chapter-item expanded "><a href="ch2-visual-studio/1-introduction.html"><strong aria-hidden="true">2.</strong> Visual Studio</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch2-visual-studio/2-installation.html"><strong aria-hidden="true">2.1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="ch2-visual-studio/3-msbuild-manual.html"><strong aria-hidden="true">2.2.</strong> Manual dependency management</a></li><li class="chapter-item expanded "><a href="ch2-visual-studio/4-msbuild-vcpkg.html"><strong aria-hidden="true">2.3.</strong> Using VCPKG with MSBuild</a></li><li class="chapter-item expanded "><a href="ch2-visual-studio/5-cmake-vcpkg.html"><strong aria-hidden="true">2.4.</strong> Using VCPKG with CMake</a></li></ol></li><li class="chapter-item expanded "><a href="ch3-xcode/1-introduction.html"><strong aria-hidden="true">3.</strong> Xcode</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch3-xcode/2-installation.html"><strong aria-hidden="true">3.1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="ch3-xcode/3-setup.html"><strong aria-hidden="true">3.2.</strong> Project setup</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -1240,6 +1240,173 @@ int main(int argc, char *argv[]) { // C/C++
 }
 </code></pre>
 <p>The first option consists in telling the compiler: &quot;Yes, there are two arguments of these types in my signature, but I will not use them, and as such did not give them a name.” The second option is to add a no-op statement for each argument, so they are considered &quot;used&quot; despite not doing anything.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="xcode"><a class="header" href="#xcode">Xcode</a></h1>
+<p>This chapter will cover Apple's IDE Xcode. We will use Apple's framework format to manage the dependencies.</p>
+<h2 id="important-note"><a class="header" href="#important-note">Important Note</a></h2>
+<p>In order to compile SDL_mixer, you will need to have the folder in a <strong>case-insensitive</strong> volume. This should be the default, but it is the root of errors such as:</p>
+<pre><code> fatal error: 'ogg/ogg.h' file not found
+</code></pre>
+<p>Also ensure that you check out the entire command output as these errors tend to get buried between two compile commands.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="installing-xcode-and-dependencies"><a class="header" href="#installing-xcode-and-dependencies">Installing Xcode and dependencies</a></h1>
+<p>In this section we will focus on installing Xcode and the SDL2 frameworks.</p>
+<h2 id="xcode-1"><a class="header" href="#xcode-1">Xcode</a></h2>
+<p>Xcode can be installed through the App Store on any Mac device running macOS ≥ 11. If your device cannot upgrade past macOS 10.15 (Catalina), you will have to download and install Xcode manually from <a href="https://developer.apple.com/download/all/?q=xcode%2012.4">Apple's developer website</a>, the last version supported is 12.4.</p>
+<h2 id="installing-base-sdl2"><a class="header" href="#installing-base-sdl2">Installing Base SDL2</a></h2>
+<p>The latest development library can be acquired from the <a href="https://www.libsdl.org/download-2.0.php">official website</a>. Once downloaded, mount the <code>DMG</code> file and copy the <code>SDL2.framework</code> folder in <code>/Library/Frameworks/</code>, you will be prompted for your password when doing so.</p>
+<h2 id="installing-the-subprojects"><a class="header" href="#installing-the-subprojects">Installing the Subprojects</a></h2>
+<p>At the time of writing, other than SDL_ttf, all the prebuilt frameworks do not include an arm64 build. To fix this issue, we will generate all the <code>DMG</code> ourselves.</p>
+<p>The next set of steps needs to be repeated for each subproject you want to add, in each command, replace <code>[project]</code> by the SDL_image/mixer/net/ttf:</p>
+<p>Clone the <code>[project]</code> repository, and enter its Xcode folder:</p>
+<pre><code>git clone https://github.com/libsdl-org/[project].git
+cd [project]/Xcode
+</code></pre>
+<p>Optionally, if you wish to compile a specific version of the library, they all have <code>release-2.0.x</code> which you can checkout.</p>
+<p>Run the build command:</p>
+<pre><code>xcodebuild ONLY_ACTIVE_ARCH=NO -scheme &quot;Create DMG&quot; -configuration Release
+</code></pre>
+<p>This will compile for both arm64 and x86_64, which will allow you later on to do so yourself with your own application.</p>
+<p>You can find the resulting <code>DMG</code> in the <code>[project]/Xcode/build</code> folder, the installation is identical to SDL2.</p>
+<h2 id="removing-the-quarantine-property"><a class="header" href="#removing-the-quarantine-property">Removing the &quot;quarantine&quot; property</a></h2>
+<p>You may be familiar with the &quot;Unknown source&quot; prompt when launching an application downloaded from outside the App Store for the first time. This also applies to frameworks, except that instead of getting a prompt it will simply not load and give you a vague error message about system policies.</p>
+<p>You can check which frameworks have this &quot;quarantine&quot; attribute with the command:</p>
+<pre><code>/bin/ls -l@ /Library/Frameworks/
+</code></pre>
+<p>And you can remove the attribute on all the SDL2 frameworks with the command:</p>
+<pre><code>sudo xattr -d com.apple.quarantine /Library/Frameworks/SDL2*
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="setting-up-the-xcode-project"><a class="header" href="#setting-up-the-xcode-project">Setting up the Xcode project</a></h1>
+<p>In this section, we will cover the creation of C++ projects in Xcode and linking the SDL2 dependencies.</p>
+<h2 id="creating-a-project-1"><a class="header" href="#creating-a-project-1">Creating a project</a></h2>
+<p>Open Xcode and click &quot;Create a new project&quot;.</p>
+<p>The only template that allows using C/C++ is <code>Command Line Tool</code> under the <code>macOS</code> tab. Select this one, give it a name and set the language to either C or C++. The other options can be set at your own discretion. Finally, select the directory you want to store the project in.</p>
+<h2 id="configuring-the-project"><a class="header" href="#configuring-the-project">Configuring the Project</a></h2>
+<p>In the file tree, click on the project (top-level item) to reveal the configuration menu. On the left side of the menu, click on the project name and on build settings. Scroll down to (or search for) <code>macOS Deployment Target</code>, this is the minimum macOS version you want your application to run on. At the time of writing, the minimum version for base SDL is <code>10.6</code> (Snow Leopard), but while you can force your project to target the same version it may fail linking. As such, if compatibility is a concern, pick the oldest version that is supported by your version of Xcode (i.e. present in the drop-down menu).</p>
+<p>Now select your target. In the <code>Build Phases</code> tab, expand the <code>Link Binary With Libraries</code> section. This is the place you want to list all the frameworks you want to link. To add the SDL2 frameworks, click on the <code>+</code> symbol, at the bottom click on &quot;Add others...&quot; and &quot;Add files...&quot; and navigate to <code>/Library/Frameworks</code> (you can open a navigation bar with <code>CMD+Shift+G</code>). You can select multiple frameworks at once.</p>
+<p>Lastly, by default you will not be able to dynamically load some SDL2 libraries due to code signing. To fix this you can do either of these actions:</p>
+<ul>
+<li>in <code>Signing &amp; Capabilities</code>, tick <code>Disable Library Validation</code>,</li>
+<li>or, in <code>Build Settings</code>, set <code>Enable Hardened Runtime</code> to <code>No</code>,</li>
+<li>or, in <code>General</code>, for each framework pick the option <code>Embed &amp; Sign</code> (permitted by SDL2's zlib license).</li>
+</ul>
+<h2 id="testing-the-project"><a class="header" href="#testing-the-project">Testing the project</a></h2>
+<p>In order to test the project, go back into the file tree and click on the file called <code>main</code>. We will replace its content with a program that initializes all the libraries, prints out their version and shuts them all down.</p>
+<details>
+<summary> Test code </summary>
+<pre><code class="language-cpp">#include &lt;SDL2/SDL.h&gt;
+#include &lt;SDL2_image/SDL_image.h&gt;
+#include &lt;SDL2_mixer/SDL_mixer.h&gt;
+#include &lt;SDL2_net/SDL_net.h&gt;
+#include &lt;SDL2_ttf/SDL_ttf.h&gt;
+
+/**
+ * @brief Initializes every library.
+ */
+void init_all(void) {
+  if (0 &gt; SDL_Init(SDL_INIT_VIDEO)) {
+    SDL_Log(&quot;%s\n&quot;, SDL_GetError());
+    return;
+  }
+
+  if (0 &gt; IMG_Init(IMG_INIT_PNG)) {
+    SDL_Log(&quot;%s\n&quot;, IMG_GetError());
+    return;
+  }
+
+  if (0 &gt; Mix_Init(MIX_INIT_MP3)) {
+    SDL_Log(&quot;%s\n&quot;, Mix_GetError());
+    return;
+  }
+
+  if (0 &gt; SDLNet_Init()) {
+    SDL_Log(&quot;%s\n&quot;, SDLNet_GetError());
+    return;
+  }
+
+  if (0 &gt; TTF_Init()) {
+    SDL_Log(&quot;%s&quot;, TTF_GetError());
+    return;
+  }
+
+  SDL_Log(&quot;Every library was initialized successfully.\n&quot;);
+}
+
+/**
+ * @brief Quits all libraries.
+ */
+void quit_all(void) {
+  TTF_Quit();
+  SDLNet_Quit();
+  Mix_Quit();
+  IMG_Quit();
+  SDL_Quit();
+}
+
+/**
+ * @brief For each libraries, logs the installed version.
+ */
+void log_libraries_version(void) {
+  SDL_version sdl_compiled_version;
+  SDL_VERSION(&amp;sdl_compiled_version);
+  SDL_version sdl_linked_version;
+  SDL_GetVersion(&amp;sdl_linked_version);
+  SDL_Log(&quot;SDL:\n&quot;
+          &quot;\tCompiled against: %d.%d.%d\n&quot;
+          &quot;\tLinked against: %d.%d.%d\n&quot;,
+          sdl_compiled_version.major, sdl_compiled_version.minor,
+          sdl_compiled_version.patch, sdl_linked_version.major,
+          sdl_linked_version.minor, sdl_linked_version.patch);
+
+  SDL_version img_compiled_version;
+  SDL_IMAGE_VERSION(&amp;img_compiled_version);
+  const SDL_version *img_linked_version = IMG_Linked_Version();
+  SDL_Log(&quot;SDL Image:\n&quot;
+          &quot;\tCompiled against: %d.%d.%d\n&quot;
+          &quot;\tLinked against: %d.%d.%d\n&quot;,
+          img_compiled_version.major, img_compiled_version.minor,
+          img_compiled_version.patch, img_linked_version-&gt;major,
+          img_linked_version-&gt;minor, img_linked_version-&gt;patch);
+
+  SDL_version mix_compiled_version;
+  SDL_MIXER_VERSION(&amp;mix_compiled_version);
+  const SDL_version *mix_linked_version = Mix_Linked_Version();
+  SDL_Log(&quot;SDL Mixer:\n&quot;
+          &quot;\tCompiled against: %d.%d.%d\n&quot;
+          &quot;\tLinked against: %d.%d.%d\n&quot;,
+          mix_compiled_version.major, mix_compiled_version.minor,
+          mix_compiled_version.patch, mix_linked_version-&gt;major,
+          mix_linked_version-&gt;minor, mix_linked_version-&gt;patch);
+
+  SDLNet_version net_compiled_version;
+  SDL_NET_VERSION(&amp;net_compiled_version);
+  const SDLNet_version *net_linked_version = SDLNet_Linked_Version();
+  SDL_Log(&quot;SDL Net:\n&quot;
+          &quot;\tCompiled against: %d.%d.%d\n&quot;
+          &quot;\tLinked against: %d.%d.%d\n&quot;,
+          net_compiled_version.major, net_compiled_version.minor,
+          net_compiled_version.patch, net_linked_version-&gt;major,
+          net_linked_version-&gt;minor, net_linked_version-&gt;patch);
+
+  SDL_version ttf_compiled_version;
+  TTF_VERSION(&amp;ttf_compiled_version);
+  const SDL_version *ttf_linked_version = TTF_Linked_Version();
+  SDL_Log(&quot;SDL TTF:\n&quot;
+          &quot;\tCompiled against: %d.%d.%d\n&quot;
+          &quot;\tLinked against: %d.%d.%d\n&quot;,
+          ttf_compiled_version.major, ttf_compiled_version.minor,
+          ttf_compiled_version.patch, ttf_linked_version-&gt;major,
+          ttf_linked_version-&gt;minor, ttf_linked_version-&gt;patch);
+}
+
+int main(int argc, const char * argv[]) {
+  init_all();
+  log_libraries_version();
+  quit_all();
+
+  return 0;
+}
+</code></pre>
+</details>
+<p>After pasting the code and saving the file, press CMD+R to run the executable, if no error shows up: congratulations, you are ready to get coding!</p>
 
                     </main>
 
